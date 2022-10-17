@@ -1,0 +1,18 @@
+<form [formGroup]="formCoupon" novalidate (ngSubmit)="onSubmit()">
+  <div class="row no-gutters" *ngIf="formCoupon.controls['promotedCod']">
+    <mat-form-field class="col-12" appearance="outline">
+      <input matInput placeholder="Digite o código do cupom" formControlName="promotedCod">
+      <mat-error *ngIf="formCoupon.controls['promotedCod'].hasError('required')">
+          É necessário o nome do cupom
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12" appearance="outline">
+      <input matInput [matDatepicker]="picker" formControlName="expiration" placeholder="Escolha uma data de expiração do código">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="row no-gutters d-flex justify-content-center">
+    <button mat-raised-button class="col-4" type="submit">Adicionar Cupom</button>
+  </div>
+</form>

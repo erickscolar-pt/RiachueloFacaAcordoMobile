@@ -1,0 +1,86 @@
+h1{
+    font-size: 2.3em;
+    color: black;
+}
+
+h2{
+    color: rgb(0, 0, 0) !important;
+}
+
+p{
+    font-size: 1.7em;
+    color: black;
+}
+
+.picpay {
+    background: #68e958 ;
+    overflow: hidden;
+    .mobile-caixa-1{
+      .mobile-h1{
+        display: none;
+      }
+    }
+    .mobile-caixa-texto{
+      .mobile-text{
+        display: none;
+      }
+    }
+}
+
+.btn-theme {
+  border-radius: 50px !important;
+  transition: all 0.5s;
+  background: #7511a9 !important;
+  color: white !important;
+  font-size: 20px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.destaque{
+    color: rgb(255, 255, 255) !important;
+    font-weight: bold;
+}
+
+.btn-theme:hover {
+    background-color: rgb(255, 255, 255) !important;
+    border: 1px solid rgba(25, 206, 118, 1) !important;
+    color: rgba(25, 206, 118, 1) !important;
+}
+
+@media (max-width: 600px) {
+  .picpay{
+    background: #4CDF87 !important;
+    .mobile-caixa-1{
+      .mobile-h1{
+        display: block;
+        text-align: center;
+      }
+      .web-h1{
+        display: none;
+      }
+    }
+    .mobile-caixa-texto{
+      .mobile-text{
+        display: block;
+        text-align: initial;
+      }
+      .web-text{
+        display: none;
+      }
+    }
+    .mobile-btn{
+      display: flex;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      button{
+        background: #FFFFFF !important;
+        border: 1px solid #4CDF87 !important;
+        border-radius: 6px !important;
+        color: black !important;
+      }
+    }
+  }
+}

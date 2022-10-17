@@ -1,0 +1,120 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="was-validated">
+  <div class="row no-gutters" *ngIf="userForm.controls['fullName']">
+    <mat-form-field class="col-12" appearance="outline">
+      <div class="roxo">
+        <input matInput placeholder="Digite seu nome completo" [value]="userGoogle?.getBasicProfile().getName()" formControlName="fullName">
+        <fa-icon class="position-absolute" [icon]="nameicon"></fa-icon>
+      </div>
+      <mat-error *ngIf="userForm.controls['fullName'].hasError('required')">
+        É necessário inserir seu nome
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div [ngClass]="{'row mx-auto': formTypeStr=='search',
+  'row': formTypeStr!='search'}">
+    <mat-form-field class="col-12" appearance="outline" *ngIf="formTypeStr!='search'">
+      <input (keyup)="onKey($event)" matInput placeholder="CPF ou CNPJ" [mask]="mask" appCpfCnpj formControlName="cpfOrCnpj">
+      <fa-icon class="position-absolute" [icon]="cpfIcon"></fa-icon>
+      <mat-error *ngIf="userForm.controls['cpfOrCnpj'].hasError('required')">
+        É necessário inserir CPF ou CNPJ
+      </mat-error>
+      <mat-error *ngIf="userForm.controls['cpfOrCnpj'].hasError('invalidCpf') && userForm.controls['cpfOrCnpj'].invalid">
+        CPF inválido
+      </mat-error>
+      <mat-error *ngIf="userForm.controls['cpfOrCnpj'].hasError('invalidCnpj') && userForm.controls['cpfOrCnpj'].invalid">
+        CNPJ inválido
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-group row no-gutters lead-search mx-auto p-md-0 coringa" *ngIf="formTypeStr=='search'">
+      <div class="row no-gutters">
+        <input class="form-control col-12" (keyup)="onKey($event)" placeholder="Digite seu CPF" [mask]="mask" appCpfCnpj formControlName="cpfOrCnpj" required>
+        <button class="btn btn-consulta col-md-2 pb-md-2 pt-md-2 p-1" style="z-index:2">
+          <mat-icon class="web">search</mat-icon>
+          <span class="mobile">Consultar</span>
+        </button>
+      </div>
+        <mat-error class="pl-5 pt-2 err" *ngIf="userForm.controls['cpfOrCnpj'].hasError('invalidCpf') && userForm.controls['cpfOrCnpj'].invalid">
+          CPF inválido
+        </mat-error>
+        <mat-error class="pl-5 pt-2 err" *ngIf="userForm.controls['cpfOrCnpj'].hasError('invalidCnpj') && userForm.controls['cpfOrCnpj'].invalid">
+          CNPJ inválido
+        </mat-error>
+    </div>
+    <!--
+          <div class="form-group row no-gutters lead-search mx-auto p-md-0 coringa" *ngIf="formTypeStr=='search'">
+      <div class="row no-gutters">
+        <input class="form-control col-12" (keyup)="onKey($event)" placeholder="Digite seu CPF" [mask]="mask" appCpfCnpj formControlName="cpfOrCnpj" required>
+        <button class="btn btn-consulta col-6 pb-md-2 pt-md-2 p-1" style="z-index:2">
+          Consultar
+        </button>
+      </div>
+        <mat-error class="pl-5 pt-2 err" *ngIf="userForm.controls['cpfOrCnpj'].hasError('invalidCpf') && userForm.controls['cpfOrCnpj'].invalid">
+          CPF inválido
+        </mat-error>
+        <mat-error class="pl-5 pt-2 err" *ngIf="userForm.controls['cpfOrCnpj'].hasError('invalidCnpj') && userForm.controls['cpfOrCnpj'].invalid">
+          CNPJ inválido
+        </mat-error>
+    </div>
+     -->
+  </div>
+  <div class="row no-gutters" *ngIf="userForm.controls['email']">
+    <mat-form-field class="col-12" appearance="outline">
+      <input matInput placeholder="E-mail" type="email" [value]="userGoogle?.getBasicProfile().getEmail()" formControlName="email">
+      <fa-icon class="position-absolute" [icon]="mailIcon"></fa-icon>
+      <mat-error *ngIf="userForm.controls['email'].hasError('required')">
+        É necessário inserir um e-mail
+      </mat-error>
+      <mat-error *ngIf="userForm.controls['email'].hasError('invalid')">
+        E-mail inválido
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="row no-gutters" *ngIf="userForm.controls['phone']">
+    <mat-form-field class="col-12" appearance="outline">
+      <input matInput placeholder="Telefone" formControlName="phone" mask="(00)0 0000-0000">
+      <fa-icon class="position-absolute" [icon]="phoneIcon"></fa-icon>
+      <mat-error *ngIf="userForm.controls['phone'].hasError('required')">
+        É necessário inserir um telefone
+      </mat-error>
+      <mat-error *ngIf="userForm.controls['phone'].hasError('invalid')">
+        Telefone inválido
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="row no-gutters" *ngIf="userForm.controls['password']">
+    <mat-form-field class="col-12" appearance="outline">
+      <input matInput placeholder="Senha" type="password" minlength="6" formControlName="password">
+      <fa-icon class="position-absolute" [icon]="pwdIcon"></fa-icon>
+      <mat-error *ngIf="userForm.controls['password'].hasError('required')">
+        É necessário inserir uma senha
+      </mat-error>
+      <mat-error *ngIf="userForm.controls['password'].hasError('minlength')">
+        A senha precisa ter 6 caracteres
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="row no-gutters pb-3" *ngIf="userForm.controls['passwordCheck']">
+    <mat-form-field class="col-12" appearance="outline">
+      <input matInput placeholder="Confirmação de senha" type="password" minlength="6" formControlName="passwordCheck">
+      <fa-icon class="position-absolute" [icon]="pwdIcon"></fa-icon>
+      <mat-error *ngIf="userForm.controls['passwordCheck'].hasError('required')">
+        É necessário confirmar sua senha
+      </mat-error>
+      <mat-error *ngIf="userForm.controls['passwordCheck'].hasError('minlength')">
+        A senha precisa ter 6 caracteres
+      </mat-error>
+      <mat-error *ngIf="userForm.controls['passwordCheck'].hasError('notEqual')">
+        A senha e a confirmação de senha precisam ser identicas
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="row no-gutters d-flex justify-content-between bt">
+    <button class="col-12 col-md-5 mb-4 mb-md-0 btn btn-theme" type="submit" *ngIf="formTypeStr!='search'">
+      <span class="web">Entrar</span>
+      <span class="mobile">Próximo</span>
+    </button>
+    <button  class="mb-4 mb-md-0 btn btn-google" type="button" *ngIf="!tela" (click)="authenticate()"><p>Entrar com Google</p></button>
+    <button class="col-12 col-md-5 btn btn-theme" type="button" (click)="register()" *ngIf="router.url == '/login'">Cadastre-se</button>
+  </div>
+</form>

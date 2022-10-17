@@ -1,0 +1,75 @@
+<div class="row no-gutters">
+  <div class="col-12">
+    <div class="row no-gutters align-items-center justify-content-center">
+      <div class="container-fluidng">
+        <div class="row no-gutters card border-0 p-4 text-center paguecomprando" >
+          <div class="col-12 align-items-center" >
+            <div>
+              <div class="row justify-content-center">
+                <figure *ngIf="debt.bandeira.includes('Net')" class="col-6 my-1">
+                  <img [src]="NetImage" width="130" class="my-1 p-2 mx-auto" alt="">
+                </figure>
+                <figure *ngIf="!debt.bandeira.includes('Net')" class="col-3 d-flex align-items-center mx-auto">
+                  <img [src]="debt.company.urlImage" class="img-fluid w-100 mt-4" alt="Riachuelo Faça Acordo">
+                </figure>
+              </div>
+              <div class="col-12 my-1">
+                <h2>Contrato com acordo ativo:</h2>
+              </div>
+              <div class="col-12 my-2">
+                <p>Você já tem um acordo nesse contrato. Deseja imprimir uma 2ª via do boleto?</p>
+              </div>
+              <div class="col-12 my-3">
+                <div class="col-12">
+                  <div class="row">
+                  <div class="col-3 no-padding">
+                    <p style="font-weight: bold;">Parcela</p>
+                  </div>
+                  <div class="col-3 no-padding">
+                    <p style="font-weight: bold;">Vencimento</p>
+                  </div>
+                  <div class="col-3 no-padding">
+                    <p style="font-weight: bold;">Valor</p>
+                  </div>
+                  <div class="col-3 no-padding">
+                    <p style="font-weight: bold;">Status</p>
+                  </div>
+                </div>
+                </div>
+                <div class="row" *ngFor="let parcel of debt.acordo[0].acordoParcela">
+                  <div class="col-12">
+                    <div class="row">
+                    <div class="col-3 no-padding">
+                      <p>{{parcel.numeroParcela}}</p>
+                    </div>
+                    <div class="col-3 no-padding">
+                      <p>{{parcel.dataVencimento | date:'dd/MM/yyyy'}}</p>
+                    </div>
+                    <div class="col-3 no-padding">
+                      <p>{{ parcel.valorParcela |
+                        currency : 'BRL' }}</p>
+                    </div>
+                    <div class="col-3 no-padding">
+                      <p *ngIf="parcel.valorPago != 0"> Pago</p>
+                      <p *ngIf="checkDateInDay(parcel.dataVencimento) == '0' && parcel.valorPago == 0"> Vencido</p>
+                      <p *ngIf="checkDateInDay(parcel.dataVencimento) == '1' && parcel.valorPago == 0"> Em dia</p>
+                      <p *ngIf="checkDateInDay(parcel.dataVencimento) == '2' && parcel.valorPago == 0"> A Vencer</p>
+                    </div>
+                  </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-12 mt-5 mb-3">
+                <button class="btn btn-theme" type="button" (click)="generateTicket()">
+                  Gerar boleto
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

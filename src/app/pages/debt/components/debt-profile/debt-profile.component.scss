@@ -1,0 +1,183 @@
+.card {
+  border-radius: 15px;
+}
+
+.text-title{
+  font-size: 23px;
+  margin-right: 0px !important;
+  padding-right: 0px !important;
+}
+
+.description-ofertas{
+  display: flex;
+  color: #28a745 !important;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.oferta{
+  display: inline-flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+}
+
+.img-cliente{
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.img-cliente img {
+  width: 45%;
+}
+
+.infodebt{
+  background-color: white;
+  border:1px solid black !important ;
+  padding: 15px;
+}
+
+.line-debt-itens{
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-left: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-top: 1em;
+}
+
+.desconto-0{
+  position: relative;
+}
+
+.desconto-caixa{
+  position: absolute;
+  display: flex;
+  width: 88%;
+  justify-content: flex-end;
+}
+
+.desconto{
+  background: linear-gradient(162.3deg, #9B00D1 0%, rgba(141, 6, 189, 0.53125) 46.88%, rgba(184, 102, 213, 0.53125) 99.99%, rgba(113, 86, 122, 0) 100%);
+  position: absolute;
+  height: 130px;
+  width: 130px;
+  clip-path: polygon(0% 0, 100% 0%, 100% 100%, 50% 50%);
+}
+
+.desconto span{
+  color: #fff !important;
+  font-size: 20px !important;
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: stretch;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 13px;
+}
+
+.text-green{
+  color: rgb(13, 212, 142) !important;
+}
+
+.desco {
+  border-radius: 100%;
+  background-color:  rgba(0, 100, 100, 1) !important;
+  width: 70px;
+  height: 70px;
+  position: relative;
+}
+
+.msg-vencidoeavencer p{
+  color: rgb(63, 63, 63) !important;
+  font-size: 10px;
+}
+
+p {
+  color: rgb(63, 63, 63) !important;
+  margin-top: 5px !important;
+  font-size: 19px
+}
+
+figure {
+  border-radius: 25px;
+}
+
+fa-icon {
+  right: 0px;
+}
+
+.btn {
+  border-radius: 35px !important;
+  cursor: pointer;
+  font-family: 'arial' !important;
+  padding: 5px 10px 5px 10px !important;
+}
+
+.btn:hover{
+  border: 1px solid #7511a9 !important;
+  color: #7511a9 !important;
+}
+
+.desco {
+  border-radius: 100%;
+  background-color:  rgba(0, 100, 100, 1) !important;
+  width: 70px;
+  height: 70px;
+  position: relative;
+}
+h3{
+  font-size: 1.1em !important;
+  color: gray !important;
+}
+/deep/ .mat-radio-label-content, p {
+  color: gray;
+  margin: 0px;
+}
+
+/deep/ .mat-radio-outer-circle {
+  border-color: rgba(0, 100, 100, 1);
+}
+
+/deep/ .mat-radio-checked {
+  .mat-radio-outer-circle {
+    border-color:  rgba(44,244,148,1) !important;
+  }
+
+  .mat-radio-inner-circle {
+    background-color:  rgba(44,244,148,1) !important;
+  }
+}
+
+.img-cliente img {
+  width: 45%;
+}
+
+@media (max-width: 600px) {
+  .line-debt-itens {
+    margin-top: 40px !important;
+  }
+
+  .img-cliente img {
+    width: 50%;
+  }
+
+  .description-ofertas{
+    font-size: 15px !important;
+  }
+
+  .btn {
+    font-size: 13px;
+  }
+}

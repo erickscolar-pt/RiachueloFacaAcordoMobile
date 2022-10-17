@@ -1,0 +1,278 @@
+.caixas{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  .caixa-btns{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    button{
+      width: 8em;
+    }
+    .email{
+      margin-right: 4px;
+    }
+    .sms{
+      margin-left: 4px;
+    }
+  }
+}
+
+.input-group-mobile{
+  display: none;
+}
+
+.env-msg p{
+  color: black;
+}
+
+.login p{
+  color: black;
+  font-size: 30px !important;
+}
+
+.bloqueio-style-header {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7511a9;
+  width:100%;
+  color:white;
+  font-size: 21px;
+}
+
+.bloqueio-style{
+  border-radius:30px !important;
+  background-color:white;
+  height: 85%;
+  box-shadow: 5px 10px 31px 10px rgba(0, 0, 0, 0.4);
+  margin-left: 20%;
+  border: none !important;
+}
+
+.img-alert{
+  width: 10%;
+}
+
+.m-pin{
+  margin-left: 20%;
+}
+
+.bloqueio-style p{
+  font-size: 20px;
+}
+
+.as{
+  overflow: hidden;
+}
+
+.botaocheck{
+  background-color: #059c67 !important;
+}
+.login h2{
+  color: black !important;
+}
+
+.green{
+  background-color: #059c67 !important;
+}
+
+.green:hover{
+  background-color: #FFF !important;
+}
+
+.text-center{
+  text-align: center;
+  color: black !important;
+}
+
+.text-bloqueio{
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+.position-absolute{
+  top: 0px;
+}
+.card{
+  border-radius: 15px;
+  border: 1px solid #fff !important;
+}
+
+.btn-theme {
+  border-radius: 35px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-theme:hover {
+  background-color: #FFF;
+  color: #7511a9 !important;
+  border: 1px solid #7511a9 !important;
+}
+
+a {
+    color: #7511a9 !important;
+    font-weight: bolder;
+}
+
+.roxo{
+border: solid 1px black;
+}
+
+.input-group{
+  margin-left: 3rem;
+}
+
+.errorpassword {
+  animation: treme 0.1s;
+  animation-iteration-count: 3;
+}
+
+@keyframes treme {
+  0% {margin-left: 0;}
+  25% {margin-left: 5px;}
+  50% {margin-left: 0;}
+  75% {margin-left: -5px;}
+  100% {margin-left: 0;}
+}
+
+@media (max-width: 600px){
+  .caixa-pin-mobile{
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    padding: 2em;
+    width: 100%;
+  }
+  .input-group-mobile{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: center;
+    align-items: stretch;
+    button{
+      margin-top: 1.5em;
+      background: #9F36C4;
+      border-radius: 6px;
+    }
+  }
+  .env-msg p{
+    color: rgb(255, 255, 255);
+  }
+  .text-center{
+    text-align: center;
+    color: rgb(255, 255, 255) !important;
+  }
+  .green{
+    background: rgba(217, 217, 217, 0.67) !important;
+    border-radius: 8px !important;
+    width: 40% !important;
+  }
+  .caixas{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  .caixa-btns{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    button{
+      width: 80%;
+      background: #9F36C4;
+      border-radius: 6px;
+    }
+    .email{
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+    .sms{
+      margin-left: 0;
+    }
+    .hidesms{
+      display: none;
+    }
+    .hideemail{
+      display: none;
+    }
+  }
+}
+  .card {
+    border-radius: 0px !important;
+    border: 0px !important;
+    height: 100% !important;
+  }
+  .login {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: stretch;
+    align-items: stretch;
+    p{
+      color: white !important;
+      text-align: center;
+    }
+  }
+  .rec-senha{
+    display: flex;
+    p{
+      color: white;
+      text-align: center;
+    }
+  }
+  .as{
+    overflow: inherit;
+  }
+  .riachuelo{
+    background: none;
+  }
+  .m-pin{
+    margin-left: 0;
+    padding: 15px 0px !important;
+  }
+
+  .input-group{
+      //margin-left: 0;
+      display: none;
+  }
+
+  .bloqueio-style-header {
+    font-size: 18px !important;
+  }
+
+  .img-alert{
+    width: 30%;
+  }
+
+  .text-bloqueio{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px !important;
+  }
+
+  .bloqueio-style{
+    margin-left: 0 !important;
+  }
+
+  p {
+    font-size: 13px !important;
+  }
+}

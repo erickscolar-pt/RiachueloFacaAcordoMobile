@@ -1,0 +1,28 @@
+<div class="row no-gutters mat-elevation-z8">
+  <div class="col-12">
+    <div class="row no-gutters justify-content-end">
+      <button mat-raised-button class="w-25" (click)="add()" type="button">
+        Adicionar <mat-icon>person_add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="col-12">
+    <ng-container matColumnDef="active">
+      <th mat-header-cell *matHeaderCellDef> Ativo </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-slide-toggle [checked]=element.active (change)="slideIt($event, element.id)"></mat-slide-toggle>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="promotedCod">
+      <th mat-header-cell *matHeaderCellDef> Cupom </th>
+      <td mat-cell *matCellDef="let element"> {{element.promotedCod}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator
+    showFirstLastButtons
+    [pageSize]="100"
+    [pageSizeOptions]="[5, 10, 20, 100]">
+  </mat-paginator>
+</div>

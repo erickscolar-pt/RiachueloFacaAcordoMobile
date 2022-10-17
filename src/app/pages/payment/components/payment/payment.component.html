@@ -1,0 +1,28 @@
+<div class="row no-gutters card border-0 p-4 text-center riachuelo" [ngClass]="voltar ? 'opc' : '' ">
+  <app-debt-installment
+    *ngIf="!ocultaTela"
+    [debt]="debt"
+    [jocker]="jocker"
+    [ocultaBtnVOrS]="ocultaBtnVOrS"
+    (volta)="volta($event)"
+    (generateCCPlot)="getCCPlot($event)">
+  </app-debt-installment>
+</div>
+<div class="row no-gutters card border-0 p-4 text-center riachuelo" [ngClass]="!voltar  ? 'opc' : '' ">
+  <app-payment-form
+    (setPaymentOption)="getPaymentOption($event)"
+    [debt]="debt"
+    [hasErrorCC]="hasErrorCC"
+    [optionPayBack]="optionPayBack"
+    *ngIf="plotOption || hasErrorCC || !ocultarBtnOptionCard || !ocultarBtn"
+    (filhinho)="trueOrFalse($event)"
+    (filhinho2)="trueOrFalse2($event)"
+    (voltarMetodoPagamento)="voltarMetodoPagamento($event)"
+    >
+  </app-payment-form>
+  <div *ngIf="!ocultarBtnOptionCard"  [ngClass]="ocultarBtn || ocultaOpcBlt ? 'opc' : '' " class="col-12 mt-4 justify-content-center div-voltar">
+    <button type="button" class="btn btn-theme col-5 botao-voltar" (click)="optionCardBack()">
+      Voltar
+    </button>
+  </div>
+</div>

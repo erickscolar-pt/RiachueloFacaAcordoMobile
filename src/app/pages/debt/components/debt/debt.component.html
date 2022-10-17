@@ -1,0 +1,58 @@
+<div class="container-fluid no-gutters py-5">
+  <div class="row py-4 mt-4 justify-content-center justify-content-md-start">
+    <ng-container class="col-12 col-md-4">
+      <app-debt-profile
+        class="col-12 col-md-4 mb-3"
+        [debt]="company"
+        (getPayment)="changeTradingOptions($event)"
+        (validTrueCard)="validTrueCard($event)"
+        (vencidaOrVencer)="vencidaOrVencer($event)">
+      </app-debt-profile>
+    </ng-container>
+    <ng-container class="col-12 col-md-4">
+      <app-payment
+        class="col-12 col-md-4 mb-3"
+        *ngIf="isPayment || hasErrorCC"
+        [debt]="company"
+        [hasErrorCC]="hasErrorCC"
+        [isCardTrue]="isCardTrue"
+        [checkMetedVenOrSal]="venOrSaldoTotal"
+        [jocker]="company.jocker"
+        (generateCCPlot)="generateCCPlot($event)"
+        (generateTicketPlot)="generateTicketPlot($event)"
+        (generatePixPlot)="generatePixPlot($event)"
+        (selectCreditCard)="creditCardSelect($event)"
+        >
+      </app-payment>
+    </ng-container>
+    <ng-container class="col-12 col-md-4">
+      <app-payment-ticket
+        class="col-12 col-md-4 mb-3"
+        *ngIf="isTicket"
+        [debt]="company">
+      </app-payment-ticket>
+    </ng-container>
+    <ng-container class="col-12 col-md-4">
+      <app-debt-deal class="col-12 col-md-4 mb-3"
+        *ngIf="hasDeal"
+        [debt]="company"
+        (generateBankSlip)="checkIfIsBankSlip($event)">
+      </app-debt-deal>
+    </ng-container>
+    <ng-container class="col-12 col-md-4">
+      <app-debt-payment-ticket
+        class="col-12 col-md-4"
+        *ngIf="hasTicket"
+        [debt]="company">
+      </app-debt-payment-ticket>
+    </ng-container>
+    <ng-container class="col-10 col-md-4 pl-md-4 my-5">
+      <app-payment-credit-card
+        class="col-12 col-md-4 mb-9"
+        *ngIf="isCC && !hasErrorCC && !isTicket && backCard"
+        [debt]="company"
+        (errorCC)="checkErrorCC($event)">
+      </app-payment-credit-card>
+    </ng-container>
+  </div>
+</div>

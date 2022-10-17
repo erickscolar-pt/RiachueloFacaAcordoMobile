@@ -1,0 +1,73 @@
+<div class="row no-gutters card p-4 text-left riachuelo">
+  <!-- Resumo do acordo -->
+  <div class="col-12">
+    <div class="col-10 mr-3 ml-3 caixa-info-acordo">
+      <b>Resumo do Acordo</b>
+      <span>Plano ecolhido: {{ parcOrAvista }}
+      </span>
+      <span>Valor: {{ valorEntrada | currency : 'BRL' }}</span>
+      <span>Vencimento: {{ dataVencimento }}</span>
+      <span>Pontos ganhos: {{ pontos }}</span>
+    </div>
+  </div>
+  <!-- Fim resumo do acordo -->
+  <!-- Boleto PDF-->
+  <div class="col-12  mt-4">
+    <div class="justify-content-center col-12">
+      <div class="col-10 pb-3" *ngIf="!ticket">
+        <ngx-loading [show]="!ticket" [config]="{ backdropBorderRadius: '3px' }" class=""></ngx-loading>
+      </div>
+<!--       <div class="col-4 mr-4">
+        <a *ngIf="ticket" class="btn btn-theme mb-2" [href]="ticket?.linkBoleto" target="_blank" (click)="success()" [download]="ticket?.fileName">
+          Baixar PDF
+        </a>
+      </div> -->
+
+      <div class="col-12">
+        <a *ngIf="ticket" class="btn btn-theme col-12 btn-pdf" [href]="ticket?.linkBoleto" target="_blank" (click)="success()" [download]="ticket?.fileName">
+          Baixar PDF
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Fim boleto PDF -->
+  <!-- Boleto por e-mail -->
+  <!--   <div class="col-12 border-top">
+    <p class="mb-2">Deseja receber o boleto por e-mail?</p>
+    <div class="row justify-content-center">
+      <div class="col-4 pb-1">
+        <button type="button" class="btn btn-theme mb-2" [disabled]="mailSent" (click)="sendTicket()">
+          Enviar
+        </button>
+      </div>
+    </div>
+  </div> -->
+  <!-- Fim boleto por e-mail -->
+  <!-- Copiar linha digitavel -->
+  <div class="col-12">
+    <div class="justify-content-center col-12 mt-3">
+      <div class="col-12">
+        <button class="btn btn-theme col-12 btn-linha-digitavel" (click)="copyInputMessage(ticket?.linhaDigitavel)">Copiar linha digitável</button>
+
+      </div>
+    </div>
+  </div>
+  <!-- Fim Copiar linha digitavel -->
+  <!-- Sms -->
+  <div class="col-12 mt-4">
+    <div class="row col-12 mr-3 ml-3">
+      <button type="button" class="btn btn-theme btn-sms col-5" [disabled]="mailSent" (click)="sendSMS()">
+        Receber por SMS
+      </button>
+        <input class="input-sms col-6" matInput type="text" placeholder="(00) 00000-0000" mask="(00) 00000-0000" [(ngModel)]="phone">
+    </div>
+    <div class="row text-left mt-4 mr-3 ml-3">
+      <div class="col-12">
+        <p>Caso haja um parcelamento, entre<br>
+        em <span class="laranja">meus débitos</span> para ter acesso<br>
+        aos boletos referentes ao seu acordo.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Fim sms -->
+</div>

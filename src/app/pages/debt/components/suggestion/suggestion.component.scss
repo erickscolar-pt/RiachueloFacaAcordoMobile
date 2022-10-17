@@ -1,0 +1,21 @@
+@media screen and (max-width: 798px) {
+  .contacts{
+    img{
+      width: 50px !important;
+    }
+  }
+}
+p{
+  color: gray !important;
+}
+a{
+  transition: transform 0.5s;
+}
+
+a:hover{
+    -ms-transform: rotate(-30deg);
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+}

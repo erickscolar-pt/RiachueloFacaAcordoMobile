@@ -1,0 +1,55 @@
+.segunda-via{
+    background: rgba(147, 39, 143, 1);
+    overflow: hidden;
+}
+h1, h2, p {
+    color: white !important;
+}
+
+.title{
+    color: rgb(255, 255, 255) !important
+}
+
+p{
+    font-size: 1.6em;
+}
+
+.btn-theme {
+    border-radius: 40px !important;
+    height: 60px;
+    transition: all 0.3s;
+    background: rgb(255, 255, 255) !important;
+    border: 1px solid #7511a9 ;
+    h2{
+        color: rgb(78, 0, 76) !important;
+    }
+    transition: 0.5s;
+}
+
+.btn-theme:hover {
+    background-color: rgba(39, 77, 147,1) !important;
+
+    h2{
+        color: rgb(255, 255, 255) !important;
+    }
+}
+
+@media (max-width: 600px) {
+  .mobile{
+    background: #C978D7 !important;
+    .mobile-caixa-texto{
+      p{
+        display: flex;
+      }
+    }
+    .mobile-btn{
+      button{
+        border: 1px solid #C978D7 !important;
+        border-radius: 6px !important;
+        h2{
+          color: #C978D7 !important;
+        }
+      }
+    }
+  }
+}

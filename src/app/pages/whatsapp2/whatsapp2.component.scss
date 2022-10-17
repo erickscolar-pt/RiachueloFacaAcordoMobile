@@ -1,0 +1,29 @@
+.whats-2{
+    background: white;
+    overflow: hidden;
+}
+h1, h2 {
+    color: rgba(147, 39, 143, 1) !important;
+}
+
+p{
+    font-size: 1.6em;
+}
+
+.btn-theme {
+    border-radius: 40px !important;
+    transition: all 0.3s;
+    background: rgba(71, 200, 205, 1) !important;
+    font-size: 1.4em !important;
+}
+
+.btn-theme:hover {
+    background-color: rgba(0, 100, 100, 1) !important;
+    color: white !important;
+}
+
+@media (max-width: 800px) {
+    .btn-theme {
+        font-size: 1em !important;
+    }
+}

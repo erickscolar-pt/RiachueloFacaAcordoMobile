@@ -1,0 +1,23 @@
+<div *ngIf="!auth.isAdmin()" class="position-fixed p-0 pb-4 pr-1 m-2 col-3 col-sm-3 col-md-1 col-lg-1 text-center">
+    <div *ngIf="!isWidget" class="row no-gutters" [@spin]>
+<!--         <a matTooltip="@Skype" href="https://join.skype.com/bot/5827537e-301a-4e2c-b4f4-b7aaeda4dcd2" target="_blank" class="col-12 px-3">
+            <img width="80" src="./../../../../assets/img/home/skype.png" alt="">
+        </a> -->
+<!--         <a matTooltip="@Messenger" href="https://www.facebook.com/facaacordo" target="_blank" class="col-12 px-3">
+            <img width="80" src="./../../../../assets/img/home/messenger.png" alt="">
+        </a> -->
+        <a matTooltip="(11) 964392624" href="https://api.whatsapp.com/send?phone=5511964392624&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato" target="_blank" class="col-12 px-3">
+            <img width="80" src="./../../../../assets/img/home/whatsapp.png" alt="">
+        </a>
+<!--         <a href="https://omne.app.br/widget/chat/eyJ3xdG9rZW4iOiI2MTE1YmE0Ny1kZmYzLTExZWItYWQ5MC0wYTE2MjU3NTIxOTYiLCJjdG9rZW4iOiI0NSIsImNob3N0IjoiMjciLCJkdG9rZW4iOiJBUFBfQ0xJXzAxIiwid3NzIjoid3NzOlwvXC9vbW5lLmNhbGxmbGV4LmNvbS5iclwvMmNlMjU3ZjgtODI3Yy0xMWViLWI2ZGQtMDIxNjE1NDc1NTQwXC9jbGllbnQiLCJ3aWRnZXQiOiJodHRwOlwvXC8xMDAuMTAwLjI0Ni4xMjRcL3dpZGdldFwvIn0=ssidf4d48ab0-585f-11ec-8396-d103a1dad64b#" target="_blank" class="col-12 px-3">
+            <img width="80" src="./../../../../assets/img/home/central.png" alt="">
+        </a> -->
+        <a matTooltip="riachuelo@facaacordo.com.br" (click)="openMailForm()" target="_blank" class="col-12 px-3">
+            <img width="80" src="./../../../../assets/img/home/email.png" alt="">
+        </a>
+    </div>
+    <div class="row no-gutters position-relative">
+        <img (click)="openWidget()" src="./../../../../assets/img/bot.png" class="col-12" width="100" alt="">
+    </div>
+</div>
+

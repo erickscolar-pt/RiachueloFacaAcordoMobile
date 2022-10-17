@@ -1,0 +1,56 @@
+.card{
+    border-radius: 15px;
+}
+p{
+    color: #8a8a8a;
+    margin: 0px;
+}
+
+.text-title{
+  color: #000000 !important;
+  font-size: 1.5em;
+  font-family: arial !important;
+}
+
+/deep/.jp-card{
+    min-width: 0px!important;
+}
+/deep/.mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    background-color: rgba(0, 100, 100, 1);
+}
+
+/deep/.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: rgba(0, 100, 100, 1);
+}
+
+/deep/ .mat-checkbox-background{
+    background-color: gray;
+}
+
+/deep/.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.2em 0 0.5em 0;
+}
+
+.btn{
+  border-radius: 25px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  font-family: 'arial' !important;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer !important;
+}
+
+.btn:hover{
+  background-color: #fff ;
+  color: #7511a9 !important;
+  border: 1px solid #7511a9 !important;
+}
+
+/deep/.mat-input-element {
+  vertical-align: super ip !important;
+  text-align: left !important;
+}

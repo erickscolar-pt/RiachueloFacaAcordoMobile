@@ -1,0 +1,96 @@
+<div class="container-fluid">
+  <div class="container h-100 py-5 as">
+      <div class="row no-gutters h-100 py-5 align-items-center">
+          <!-- Componente login -->
+          <div class="col-12 col-xl-3"></div>
+          <div class="col-12 col-md-5 col-xl-6 p-4 card border-0 my-5 riachuelo" *ngIf="!logado && !bloqueado">
+              <div class="col-12 card-body login">
+                  <p>Login</p>
+                  <app-user-form [formType]="signIn" (userSubmit)="login($event)"></app-user-form>
+              </div>
+              <div class="col-12 rec-senha">
+                  <p>Caso tenha esquecido sua senha, <a routerLink="/recuperarSenha" routerLinkActive="active">clique aqui</a> para recuperar.</p>
+              </div>
+          </div>
+          <!-- Fim componente login -->
+
+          <!-- componente pin -->
+          <div class="col-12 col-xl-3 col-md-3" *ngIf="logado && !bloq"></div>
+          <div class="col-12 col-md-6 col-xl-7 p-4 card border-0 my-5 m-pin riachuelo" *ngIf="logado && !bloq">
+              <form [formGroup]="codeGroup" (ngSubmit)="onSubmit()">
+                  <h2 class="text-center">Para sua segurança foi gerado um código PIN.</h2>
+                  <h2 class="text-center">Deseja recebê-lo por:</h2>
+                  <div class="row no-gutters my-3 caixas">
+                      <div class="caixa-btns">
+                          <button
+                            *ngIf="!checkSms"
+                            [ngClass]="checkEmail ? 'green' : '' " 
+                            (click)="generatePinEmail()" 
+                            class="btn btn-theme email"
+                            >E-mail</button>
+                          <button
+                            *ngIf="!checkEmail"
+                            [ngClass]="checkSms ? 'green' : '' " 
+                            (click)="generatePinSMS()" 
+                            class="btn btn-theme sms"
+                            >SMS</button>
+                      </div>
+                      <div class="col-12 mt-2 caixa-pin-mobile" *ngIf="hiddenInput">
+                          <div class="env-msg lead text-center mt-4 mb-4" *ngIf="checkEmail && !checkSms">
+                              <p>O código foi enviado para {{ email }}</p>
+                          </div>
+                          <div class="env-msg lead text-center mt-4 mb-4" *ngIf="!checkEmail && checkSms">
+                              <p>O código foi enviado para {{ telefone }}</p>
+                          </div>
+                          <div class="col-12 col-xl-10 input-group mb-3 mt-3">
+                              <input
+                                  (click)="checkError()"
+                                  [ngClass]="checkErrors ? 'errorpassword' : '' "
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Código PIN"
+                                  aria-describedby="button-addon2"
+                                  formControlName="code"
+                                  maxlength="6"
+                                  minlength="6"
+                              >
+                              <div class="input-group-append">
+                                <button class="btn botaocheck btn-md btn-outline-default m-0 px-3 py-2 z-depth-0 waves-effect" type="submit" [disabled]="codeGroup.invalid">
+                                  <span class="material-icons">
+                                      check
+                                  </span>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="input-group-mobile">
+                                <code-input
+                                    (click)="checkError()"
+                                    [ngClass]="checkErrors ? 'errorpassword' : '' "
+                                    [isCodeHidden]="true"
+                                    [codeLength]="6"
+                                    (codeChanged)="onCodeChanged($event)"
+                                    (codeCompleted)="onCodeCompleted($event)">
+                                </code-input>
+                                  <button class="btn btn-theme" type="submit" [disabled]="!mobileActiveBtn">
+                                    Entrar
+                                  </button>
+                            </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+          <!-- fim componente pin -->
+          <!-- componente erro -->
+          <div class="col-lg-8 pt-4 mt-5 bloqueio-style ng-star-inserted" *ngIf="logado && bloq || bloqueado">
+              <div class="my-4 bloqueio-style-header">BLOQUEIO TEMPORÁRIO</div>
+              <p class="text-bloqueio">Olá,<br><br>
+                  Devido a 3 tentativas consecutivas de acesso sem sucesso,
+                  seu cadastro ficará bloqueado por 15 minutos.</p>
+              <div class="container-fluid center mt-5 mb-3" style="text-align: center;">
+                  <img src="../../../assets/img/atencao.png" class="mb-2 img-alert">
+              </div>
+          </div>
+          <!-- fim componente erro -->
+      </div>
+  </div>
+</div>

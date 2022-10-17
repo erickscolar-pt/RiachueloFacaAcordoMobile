@@ -1,0 +1,80 @@
+<form *ngIf="!telaAgendamento" [formGroup]="paymentMethodForm" novalidate (ngSubmit)="onSubmit()">
+  <div class="row no-gutters my-3">
+    <p class="titulo">Escolha a melhor maneira de negociação</p>
+    <div class="esquerda col mt-4">
+      <!-- Parcelamento -->
+      <mat-radio-group *ngIf="tradingOptions" class="row no-gutters parcela" formControlName="installments">
+        <mat-radio-button class="d-flex justify-content-start" *ngFor="let plot of tradingOptions"
+        [value]="plot">
+        <span *ngIf="plot.numero == 1">
+          À vista
+        </span>
+        <span *ngIf="(plot.numero) != 1">
+          {{ plot.numero }} Parcelas
+        </span>
+      </mat-radio-button>
+    </mat-radio-group>
+      <!-- Fim parcelamento -->
+  </div>
+  <div class="direita col mt-5">
+    <!-- msg valor -->
+    <p class="text-center" *ngIf="debtValue">
+    <span class="msg-valores" *ngIf="(parcelaNum - 1) != 0">
+      Entrada de {{ valorEntrada | currency : 'BRL' }}<br>
+      + {{ parcelaNum - 1 }} de <b>{{ demaisParcelas | currency : 'BRL' }}</b>
+    </span>
+    <span class="msg-valores" *ngIf="(parcelaNum - 1) == 0">
+      Valor total negociado<br>
+      À vista <b>{{ debtValue | currency : 'BRL' }}</b>
+    </span><br>
+    <button type="submit" class="btn btn-theme  mb-2 mt-2">
+      <span>Continuar</span>
+    </button><br>
+    <span class="data-vencimento mt-2">
+      Vencimento<br>
+      <b>{{ dataVencimento | date:'dd/MM/yyyy'}}</b>
+      <button type="button" (click)="agendamentoComponent(true)" class="btn btn-theme  mb-2 mt-2">
+        <span>Alterar data</span>
+      </button>
+    </span>
+    <!-- botão voltar para vencida ou saldo total -->
+    <span *ngIf="ocultaBtnVOrS">
+      <button type="button" (click)="voltarVencidaEAvencer()" class="btn btn-theme  mb-2">Voltar</button>
+    </span>
+    <b class="pl-2" style="color: #2cf494"
+      *ngIf="(valorAtualizado - debtValue) > 1">
+      (Desconto de {{ valorAtualizado - debtValue | currency : 'BRL' }})
+      </b>
+    </p>
+    <!-- fim msg valor -->
+  </div>
+</div>
+<div>
+  <p style="font-size: 10px !important; text-align: center;">
+    Obs: Valores de parcelamento já contidos e tarifas. Os valores de serviços contratados
+    junto a Riachuelo não são considerados no acordo, podendo ser inclusos posteriormente ao
+    parcelamento.
+  </p>
+</div>
+</form>
+<!-- Tela agendamento -->
+<div class="agendamento-component" *ngIf="telaAgendamento">
+  <p>Escolha uma data para efetuar<br>
+  o pagamento do seu débito</p>
+
+  <mat-form-field>
+    <input class="input-data-agendamento" matInput [matDatepickerFilter]="myFilter" [matDatepicker]="myDatePicker" [min]="minDate" max="{{dataMaxima | date:'yyyy-MM-dd'}}" [(ngModel)]="startDate">
+    <mat-datepicker-toggle  [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #myDatePicker></mat-datepicker>
+  </mat-form-field>
+
+  <p class="frase-agendamento">Prazo máximo para agendamento {{ dataMaximas | date:'dd/MM/yyyy'}}</p><br>
+
+  <div class="col-12 btn-caixa-agendamento">
+    <button type="button" (click)="agendamentoComponent(false)" class="btn btn-theme mr-2 col-3 mb-2 mt-2 btn-agendamento-back">
+    </button>
+    <button (click)="agendar(true)" type="button" class="btn btn-theme col-3 mb-2 mt-2 btn-agendamento">
+      <span>Confirmar agendamento</span>
+    </button>
+  </div>
+</div>

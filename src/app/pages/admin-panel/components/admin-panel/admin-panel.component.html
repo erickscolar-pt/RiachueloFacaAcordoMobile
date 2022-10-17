@@ -1,0 +1,71 @@
+<div class="row no-gutters py-5 mt-3">
+  <form [formGroup]="dashForm" novalidate class="col-12 py-4" style="background-color: white !important;">
+    <h2>Faça Acordo Riachuelo - Usuários</h2>
+    <div>
+      <div class="row no-gutters d-flex justify-content-around">
+        <mat-form-field class="col-2">
+          <input matInput
+          placeholder="Selecione a data"
+          [satDatepicker]="picker"
+          formControlName="date">
+          <sat-datepicker #picker [rangeMode]="true"></sat-datepicker>
+          <sat-datepicker-toggle class="pr-3" matPrefix [for]="picker">
+          </sat-datepicker-toggle>
+        </mat-form-field>
+        <button mat-raised-button class="col-3 col-md-2" (click)="search()" type="button">
+          Buscar <mat-icon>search</mat-icon>
+        </button>
+        <button mat-raised-button class="col-3 col-md-2" (click)="generateReport()" type="button">
+        Gerar relatório <mat-icon>list_alt</mat-icon>
+        </button>
+        <button mat-raised-button class="col-5 col-md-2" routerLink="/register/admin" type="button">
+        Adicionar <mat-icon>person_add</mat-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+  <table mat-table [dataSource]="dataSource" class="col-12">
+    <ng-container matColumnDef="active">
+      <th mat-header-cell *matHeaderCellDef> Ativo </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-slide-toggle [checked]="element.active" (change)="admin($event, element.id)"></mat-slide-toggle>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="admin">
+      <th mat-header-cell *matHeaderCellDef> Administrador </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-slide-toggle [checked]="checkAdmin(element.profile)" (change)="slideIt($event, element.id)"></mat-slide-toggle>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="cpfOrCnpj">
+      <th mat-header-cell *matHeaderCellDef> CPF </th>
+      <td mat-cell *matCellDef="let element"> {{element.cpfOrCnpj}} </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> E-mail </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="edit(element)" mat-mini-fab>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator
+    showFirstLastButtons
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="changePage($event)"
+    class="w-100">
+  </mat-paginator>
+</div>

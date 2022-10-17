@@ -1,0 +1,48 @@
+<div mat-dialog-content class="riachuelo">
+  <h2 mat-dialog-title>Fale Conosco</h2>
+  <form [formGroup]="mailForm" novalidate (ngSubmit)="onSubmit()">
+    <div class="row no-gutters" *ngIf="mailForm.controls['fullName']">
+      <mat-form-field class="col-12" appearance="outline">
+        <input matInput placeholder="Digite seu nome completo" formControlName="fullName">
+        <mat-error *ngIf="mailForm.controls['fullName'].hasError('required')">
+            É necessário inserir seu nome
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row no-gutters" *ngIf="mailForm.controls['email']">
+      <mat-form-field class="col-12" appearance="outline">
+        <input matInput placeholder="E-mail" type="email" formControlName="email">
+        <fa-icon class="position-absolute" [icon]="mailIcon"></fa-icon>
+        <mat-error *ngIf="mailForm.controls['email'].hasError('required')">
+          É necessário inserir um e-mail
+        </mat-error>
+        <mat-error *ngIf="mailForm.controls['email'].hasError('invalid')">
+          E-mail inválido
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row no-gutters" *ngIf="mailForm.controls['phone']">
+      <mat-form-field class="col-12" appearance="outline">
+        <input matInput placeholder="Telefone" formControlName="phone" mask="(00)0 0000-0000">
+        <fa-icon class="position-absolute" [icon]="phoneIcon"></fa-icon>
+        <mat-error *ngIf="mailForm.controls['phone'].hasError('required')">
+          É necessário inserir um telefone
+        </mat-error>
+        <mat-error *ngIf="mailForm.controls['phone'].hasError('invalid')">
+          Telefone inválido
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row no-gutters" *ngIf="mailForm.controls['message']">
+      <mat-form-field class="col-12" appearance="outline">
+        <textarea matInput cdkTextareaAutosize placeholder="Mensagem" formControlName="message"></textarea>
+        <mat-error *ngIf="mailForm.controls['message'].hasError('required')">
+          É necessário inserir uma mensagem
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row no-gutters d-flex justify-content-center">
+      <button   class="btn btn-theme" type="submit" [disabled]="mailForm.valid && submitted">Enviar</button>
+    </div>
+  </form>
+</div>

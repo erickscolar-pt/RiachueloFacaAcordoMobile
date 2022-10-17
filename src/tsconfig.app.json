@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "skipLibCheck": true,
+    "types": [
+      "gapi",
+      "gapi.auth2",
+    ],
+    "lib": [ "es2017", "dom", "esnext.array", ]
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ],
+
+}

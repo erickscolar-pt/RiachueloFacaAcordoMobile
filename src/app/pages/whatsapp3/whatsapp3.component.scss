@@ -1,0 +1,41 @@
+.whats-2{
+    background: rgb(255, 255, 255);
+    overflow: hidden;
+}
+h1, h2 {
+    color: rgb(153, 27, 165) !important;
+}
+
+p{
+    font-size: 1.6em;
+    color: rgb(44, 44, 44);
+}
+
+.btn-theme {
+    border-radius: 40px !important;
+    height: 60px;
+    transition: all 0.3s;
+    background: #7511a9 !important;
+    color: #fff;
+    font-size: 1.5em !important;
+    border: 1px solid rgb(143, 35, 165) !important;
+}
+
+.btn-theme:hover {
+    background-color: rgb(255, 255, 255) !important;
+    color: rgb(143, 35, 165) !important;
+}
+@media (max-width: 600px) {
+  h1, h2 {
+    color: #C978D7 !important;
+  }
+  .btn-theme {
+    transition: all 0.3s;
+    background: #C978D7 !important;
+    border: 1px solid #C978D7 !important;
+    font-size: 1em !important;
+    font-weight: 100;
+    border-radius: 6px !important;
+    height: 45px !important;
+  }
+}

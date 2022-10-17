@@ -1,0 +1,83 @@
+.card{
+  border-radius: 15px;
+}
+.bot{
+  background-color:rgba(0, 100, 100, 1) !important;
+  color: #fff;
+  border-radius: 7% !important;
+  font-weight: bold;
+}
+
+
+a:hover{
+background-color: white !important;
+color:rgba(0, 100, 100, 1) !important;
+border: 1px solid rgba(0, 100, 100, 1) !important;
+}
+
+/* .ocultar{
+  display: none;
+} */
+
+p{
+  color: gray !important;
+}
+
+.caixa-info-acordo{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.btn-linha-digitavel{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.btn-pdf{
+  display: flex;
+  background-color: #7511a9 !important;
+  border-radius: 10px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  border-radius: 25px;
+}
+
+.input-sms{
+  padding: 5px;
+  margin: 0;
+  height: 40px;
+  background-color: #efefef;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-sms{
+  padding: 0px;
+  margin: 0 !important;
+  font-size: 12px;
+  width: 15px;
+  height: 40px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.laranja{
+  color: #7511a9;
+}

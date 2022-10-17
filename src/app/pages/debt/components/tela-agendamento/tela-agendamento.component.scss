@@ -1,0 +1,46 @@
+.tela-agendado span{
+  /* display: flex; */
+  text-decoration: underline;
+}
+
+.caixa-msg{
+  border-radius: 25px;
+  background-color: #F2F6F7;
+}
+
+.calendario-img{
+  width: 130px;
+  height: 130px;
+}
+
+.agd{
+  font-size: 25px;
+  color: black;
+  margin: 0;
+}
+
+.texto-msg{
+  font-size: 18px;
+  color: black;
+}
+
+.cx-msg-agendamento{
+  padding: 3rem !important;
+}
+
+@media (max-width: 490px){
+  .cx-msg-agendamento{
+      padding: 0 !important;
+  }
+  .cx-msg-agendamento2{
+      padding-right: 15px;
+      padding-left: 15px;
+      margin: 0;
+  }
+
+  .caixa-msg{
+      flex: 100%;
+      max-width: 100% !important;
+  }
+
+}

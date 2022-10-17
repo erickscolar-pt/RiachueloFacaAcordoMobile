@@ -1,0 +1,144 @@
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+
+
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 80px;
+}
+
+.mobile{
+  display: none;
+}
+.web{
+  display: block;
+}
+
+a{
+  cursor:pointer;
+  text-decoration: none;
+  color: black !important;
+}
+
+mat-toolbar{
+  background-color: rgb(255, 255, 255) !important;
+  z-index: 100;
+}
+mat-toolbar a{
+  color:  rgba(93, 93, 93, 1) !important;
+  font-family: 'Averta-Regular'!important;
+  font-size: 0.8em !important;
+  transition: all 0.3s;
+}
+mat-toolbar a:hover{
+  color:  rgba(0, 100, 100, 1) !important;
+}
+.mat-button-wrapper{
+  color:   rgba(255,255,255,1) !important;
+}
+
+.btn-theme{
+  background: #7511a9 !important;
+  color: rgb(255, 255, 255) !important;
+  border-radius: 40px;
+  border: 1px solid #7511a9 !important;
+  cursor: pointer;
+  font-family: 'Averta-Regular' !important;
+}
+.btn-theme:hover{
+  background-color:rgb(255, 255, 255)  !important;
+  color: #7511a9 !important;
+  border: 1px solid #7511a9  !important;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 660px) {
+  /* menu */
+/deep/.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/deep/.cdk-overlay-connected-position-bounding-box {
+  top: 60px !important;
+  right: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  align-items: none !important;
+  justify-content: none !important;
+  position: absolute !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 1px !important;
+  min-height: 1px !important;
+  align-items: stretch !important;
+  flex-wrap: wrap !important;
+  background: white !important;
+
+  /deep/.cdk-overlay-pane {
+    position: absolute !important;
+    pointer-events: auto !important;
+    box-sizing: border-box !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    /* background: white; */
+}
+/deep/.mat-menu-panel {
+  min-width: 112px !important;
+  max-width: 100% !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  max-height: 100% !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+/deep/.mat-menu-panel {
+  background: #fff !important;
+  height: 42em !important;
+  .mat-menu-content:not(:empty) {
+    width: 100% !important;
+    height: 100% !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+}
+/deep/.mat-elevation-z4 {
+  box-shadow: none !important;
+}
+}
+/* fim menu */
+  .white-icon {
+    color: white;
+  }
+  /* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+  .white-icon svg {
+      fill: white;
+  }
+  .mobile{
+    display: block;
+  }
+  .web{
+    display: none;
+  }
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    height: 60px;
+  }
+  mat-toolbar{
+    background-color: #00CDDA  !important;
+    z-index: 100;
+  }
+}

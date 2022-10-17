@@ -1,0 +1,56 @@
+h1{
+    font-size: 2em;
+}
+
+h2{
+    color: white !important;
+}
+
+p{
+    font-size: 1.7em;
+}
+
+.whatsapp {
+    background: white;
+    overflow: hidden;
+}
+
+.btn-theme {
+    border-radius: 50px !important;
+    transition: all 0.3s;
+    background: #7511a9 !important;
+    border: 1px solid #7511a9 ;
+    font-size: 1.4em !important;
+  }
+
+  .btn-theme:hover {
+    background-color: rgb(255, 255, 255) !important;
+    color: rgb(97, 24, 94) !important;
+    border: 1px solid rgb(97, 24, 94) !important;
+}
+
+@media (max-width: 800px) {
+    .btn-theme {
+        font-size: 1em !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .img-wpp{
+      width: 20px !important;
+  }
+
+  .btn-theme {
+    font-size: 1.0em !important;
+  }
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+  .img-wpp{
+      width: 18px !important;
+  }
+
+  .btn-theme {
+    font-size: 0.7em !important;
+  }
+}

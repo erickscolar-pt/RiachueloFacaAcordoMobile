@@ -1,0 +1,54 @@
+<div class="container-fluid  py-5">
+  <div class="container py-5">
+    <div class="row no-gutters w-100 card paguecomprando">
+      <!-- parc desconto -->
+      <div class="desconto-caixa">
+        <div class="desconto">
+      <!--               <span>{{ percentualDeDesconto | percent:'1.0-0' }} <br> OFF</span> -->
+          <span>{{ percentualDesconto | percent:'1.0-0' }}<br> OFF</span>
+        </div>
+      </div>
+      <!-- fim desconto -->
+      <div class="col-10 mx-auto">
+        <div class="row no-gutters py-5">
+          <div class="col-12">
+            <p class="text-center t-1 full-name"><b>Parabéns, {{ name }}!</b></p>
+            <p class="text-center t-2">Seu acordo com a Riachuelo foi registrado.</p>
+          </div>
+        </div>
+        <div class="row mb-5 mt-4">
+          <div class="col caixa-pontos">
+            <div class="pontos-msg text-center">
+              <div class="position-pontos">
+                <img class="img-pontos" src="../../../../../assets/img/PONTOS.png" alt="Pontos">
+              </div>
+              <span><b>Pontos:</b></span>
+              <span><p>{{ pontos }} pontos</p></span>
+            </div>
+          </div>
+          <div class="col caixa-direita">
+            <b class="mb-1">Resumo de Acordo:</b>
+            <span>Plano escolhido: {{ parcOrAvista }}</span>
+            <span>Valor: {{ valorEntrada | currency : 'BRL' }}</span>
+            <span>Vencimento: {{ dataVencimento }}</span>
+          </div>
+        </div>
+        <div class="col-12 text-center mb-4">
+          <p>Os pontos informados são por parcela do acordo e serão liberados após<br>
+          o pagamento, sendo enviado por e-mail seu código de utilização.<br>
+          Ponto não acumulativos</p>
+          <span>
+            <a
+            href="https://paguecomprando.com.br/home?utm_source=fa%C3%A7a+acordo&utm_medium=link&utm_campaign=faca_acordo_riachuelo&utm_id=negocia%C3%A7%C3%A3o+sucesso"
+            target="_blank"
+            >
+              <b class="text-green">
+                Visite nossa loja!
+              </b>
+          </a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

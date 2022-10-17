@@ -1,0 +1,103 @@
+<div class="works">
+  <div class="col-12 divHowitworks" id="howItWorks">
+    <section>
+      <div class="container py-3">
+        <div class="row mb-2">
+          <div class="col-12 text-center">
+            <h2 class="title-section-white py-md-4">Poucos cliques, mega descontos!</h2>
+          </div>
+          <div class="web col-12 col-md-3 text-center d-flex pb-1" *ngFor="let step of steps; index as i">
+            <div class="card-body bg-white mt-2 mb-2 mt-md-0 mb-md-0">
+              <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                  <img [src]="step.url" class="w-50" alt="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 text-center">
+                  <h3 [ngStyle]="{'color': step.color}" class="title" [innerHTML]="step.title"></h3>
+                  <p class="p-4 text-white" [innerHTML]="step.text"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div [style.height]="auto" class="mobile col-12 text-center d-flex pb-1">
+          <mat-carousel
+          timings="250ms ease-in"
+          [autoplay]="true"
+          interval="5000"
+          color="accent"
+          maxWidth="200"
+          [hideIndicators]="true"
+          proportion="150"
+          [loop]="true"
+          [hideArrows]="false"
+          [hideIndicators]="false"
+          [useKeyboard]="true"
+          [useMouseWheel]="false"
+          orientation="ltr"
+        >
+          <mat-carousel-slide
+            #matCarouselSlide
+            *ngFor="let step of steps; index as i"
+            overlayColor="#00000040"
+            [hideOverlay]="true"
+          >
+          <div class="card-body bg-white mt-2 mb-2 mt-md-0 mb-md-0">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center align-items-center">
+                <img [src]="step.url" class="w-50" alt="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                <h3 class="title" [innerHTML]="step.title"></h3>
+                <p class="p-4 text-white" [innerHTML]="step.text"></p>
+              </div>
+            </div>
+          </div>
+        </mat-carousel-slide>
+        </mat-carousel>
+          </div>
+          <div class="mx-auto web">
+           <button class="btn btn-theme debt pl-md-5 pr-md-5" (click)="entrar()">
+            Consultar meus débitos
+           </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="container-fluid py-5 cinza web" id="sobre">
+    <div class="col-12 just mt-4 mt-md-3">
+      <section class="container mb-5">
+        <div class="row">
+          <div class="col-12 col-md-7 py-md-5">
+            <div class="col-12 text-center text-md-left p-0 p-md-3">
+              <h1>Faça Acordo + Riachuelo</h1>
+            </div>
+            <div class="col-12">
+              <br>
+              <p>A Faça Acordo é parceira da Midway e nascemos
+                para facilitar ainda mais a maneira como você faz
+                um acordo online com as Lojas Riachuelo.
+              </p>
+              <p>Construímos uma plataforma de auto negociação
+                totalmente amigável onde você tem total controle
+                para fazer seu acordo. Todas as transações feitas em
+                nosso site são totalmente seguras.
+              </p>
+              <p>
+                Garantimos a confiabilidade do começo ao fim. Seu
+                nome limpo com a Faça Acordo em poucos minutos!
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-5 p-0 pt-5">
+            <img class="img-fluid" src="./../../../assets/img/Celular.png">
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

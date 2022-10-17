@@ -1,0 +1,44 @@
+figure, .card{
+    border-radius: 15px;
+}
+figure{
+    cursor: pointer;
+}
+figcaption{
+    color: #8a8a8a;
+    margin: 0px;
+}
+.container-fluid{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.div-voltar{
+  display: flex;
+}
+
+.botao-voltar{
+  //padding-top: 4px !important;
+  //padding-bottom: 4px !important;
+  //border-radius: 25px !important;
+
+  border-radius: 25px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  font-family: 'arial' !important;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.opc{
+ display: none;
+}
+
+/* /deep/ .mat-radio-label-content, p {
+  color: #fff !important;
+} */

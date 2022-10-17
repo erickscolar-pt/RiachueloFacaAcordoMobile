@@ -1,0 +1,161 @@
+.works{
+  background: #059c67!important;
+  //overflow: hidden !important;
+}
+.web{
+  display: block;
+}
+.mobile{
+  display: none;
+}
+.cinza{
+  background-color: #666666 !important;
+}
+
+.divSobre{
+  background: #059c67!important;
+}
+
+.divHowitworks{
+  background: #ffffff!important;
+}
+
+p,
+h3 {
+  font-family: "Averta-Light";
+  margin: 0px;
+}
+
+p {
+  font-size: 1em;
+  color: #000000!important;
+}
+
+
+h2 {
+  font-size: 3em;
+  color: rgb(255, 255, 255) !important;
+}
+
+.color {
+  color: rgba(44, 244, 148, 1) !important;
+}
+
+.title-section-white {
+  color: #0a0044 !important;
+  font-weight: bold;
+}
+
+.xas {
+  background: rgba(5, 156, 103, 1) !important;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.title {
+  color: #83059c !important;
+}
+.w-50 {
+  width: 200px;
+  height: 200px;
+}
+
+.container-fluid {
+  overflow: hidden;
+}
+
+.par {
+  padding-right: 60px !important;
+}
+
+.a {
+  max-width: 200px;
+  align-items: center;
+}
+.x {
+  max-width: 200px;
+}
+
+.cinza {
+  background: #059c67;
+
+  p {
+    color: white !important;
+    font-size: 1.5em;
+  }
+
+  h1 {
+    color: #ffffff!important;
+    font-size: 3.1em;
+  }
+}
+.fd {
+  background: white;
+
+  h2 {
+    font-size: 2.3em;
+    color: black !important;
+  }
+
+  p {
+    color: rgb(255, 255, 255) !important;
+  }
+
+  h3 {
+    color: #059c67 !important;
+    color: rgb(0, 0, 0) !important;
+  }
+}
+.a {
+  cursor: pointer;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.debt{
+  height: 60px;
+  font-size: 1.3em;
+  background-color: #6800ad !important;
+  border: 1px solid #6800ad !important;
+  border-radius: 50px;
+  color: #ffffff!important;
+}
+
+.debt:hover{
+  background-color: #ffffff !important;
+  color: rgb(87, 0, 128) !important;
+  border: 1px solid #83059c !important;
+}
+#parceiros {
+  h1 {
+    font-size: 3.3em;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .web{ display: none !important; }
+  .mobile{
+    display: block !important;
+  }
+
+  .title-section-white {
+    color: #C978D7 !important;
+  }
+  .title {
+    color: #C978D7 !important;
+  }
+ }

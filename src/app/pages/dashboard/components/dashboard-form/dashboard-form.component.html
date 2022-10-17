@@ -1,0 +1,23 @@
+<form [formGroup]="dashForm" novalidate>
+  <div class="row no-gutters d-flex justify-content-around">
+    <mat-form-field class="col-10 header">
+      <input matInput
+          placeholder="Escolha um intervalo de datas"
+          [satDatepicker]="picker"
+          formControlName="date">
+      <sat-datepicker #picker [rangeMode]="true"></sat-datepicker>
+      <sat-datepicker-toggle class="pr-3" matPrefix [for]="picker">
+      </sat-datepicker-toggle>
+    </mat-form-field>
+  </div>
+  <div class="row no-gutters d-flex justify-content-between">
+      <button mat-raised-button class="col-12 col-md-3 mb-4 mb-md-0" (click)="onSubmit(1)">
+        Buscar <mat-icon>search</mat-icon>
+      </button>
+      <button mat-raised-button class="col-12 col-md-3 mb-4 mb-md-0" (click)="onSubmit(2)">
+        Gerar relatório <mat-icon>list_alt</mat-icon>
+      </button>
+      <button mat-raised-button class="col-12 col-md-3 mb-4 mb-md-0" type="reset">
+        Limpar <mat-icon>clear</mat-icon></button>
+  </div>
+</form>

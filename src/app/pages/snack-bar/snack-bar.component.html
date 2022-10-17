@@ -1,0 +1,14 @@
+<div class="position-fixed card" *ngIf="notCookie()">
+  <div class="col-12">
+    <div class="row no-gutters d-flex justify-content-between text-center">
+      <div class="col-12 col-md-8 mb-4 mb-md-0">
+        <h3 class="py-4">Este site salva seu histórico de uso.
+          <span>Ao prosseguir, você concorda com nossa <button (click)="openDialog()" class="policy"><u>Política de privacidade</u></button></span>
+        </h3>
+      </div>
+      <div class="col-12 col-md-4 py-3">
+        <button (click)="accept()" class="btn btn-theme">Prosseguir</button>
+      </div>
+    </div>
+  </div>
+</div>

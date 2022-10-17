@@ -1,0 +1,9 @@
+<div class="row no-gutters py-5 ">
+  <div class="col-12 col-lg-4 col-md-4"></div>
+  <div class="col-12 offset-1 col-md-5 ml-0 offset-md-1 co-lg-5 offset-lg-1 col-xl-4 p-4 card border-0 mt-5 riachuelo">
+      <div class="col-12 card-body login">
+          <p>{{ registerTitle }}</p>
+          <app-user-form [formType]="signUp" (userSubmit)="register($event)"></app-user-form>
+      </div>
+  </div>
+</div>

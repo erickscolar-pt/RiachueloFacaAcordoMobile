@@ -1,0 +1,102 @@
+<footer class="container-fluid py-5 footer" id="howItWorks">
+  <section>
+    <div class="container">
+      <div class="row mb-2">
+        <div class="col-12 col-md-5 text-center">
+          <div class="col-12" >
+            <img src="./../../../assets/img/icone_facaacordo.png" class="img-fluid" width="180">
+          </div>
+          <div class="col-12" >
+            <p>A Faça Acordo está nas redes sociais</p>
+          </div>
+          <div class="col-12">
+            <div class="row">
+              <div class="col col-md p-0" *ngFor="let footer of footers, let conts = index">
+                <div *ngIf="conts % 2 !== 0"  class="p-0">
+                  <a target="_blank" rel="noopener noreferrer" [href]="footer.link">
+                    <img [src]="footer.img" class="img-fluid" width="50">
+                  </a>
+                </div>
+                <div *ngIf="conts % 2 === 0"  class="p-0">
+                  <a target="_blank" rel="noopener noreferrer" [href]="footer.link">
+                    <img [src]="footer.img" class="img-fluid" width="50">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-7 py-5">
+          <div class="row">
+            <div class="col-12 col-md-4 pt-4 pt-md-0 text-center text-md-left" >
+              <div class="m-2">
+                <p class="title mb-1">Para você cliente</p>
+                <div *ngFor="let link of linkClientes">
+                  <a (click)="opt(link?.url)">
+                    {{ link.link }}
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 pt-4 pt-md-0 text-center text-md-left" >
+              <div class="m-2">
+                <p class="title mb-1">Auto Negociação</p>
+                <div *ngFor="let link of linkNegociacoes">
+                  <a (click)="opt(link?.url)">
+                    {{ link.link }}
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 pt-4 pt-md-0 text-center text-md-left" >
+              <div class="m-2">
+                <p class="title mb-1">Fale conosco</p>
+                <div *ngFor="let link of linkFales">
+                  <a (click)="opt(link?.url)">
+                    {{ link.link }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-4 pt-4 pt-md-0 text-center text-md-left" >
+              <div class="m-2">
+                <p class="title mb-1">Sobre a Faça Acordo</p>
+                <div *ngFor="let link of linkSobres">
+                  <a (click)="opt(link?.url)">
+                    {{ link.link }}
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 pt-4 pt-md-0 text-center text-md-left" >
+              <div class="m-2">
+                <p class="title mb-1">Ajuda</p>
+                <div *ngFor="let link of linkAjudas">
+                  <a (click)="opt(link?.url)">
+                    {{ link.link }}
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 pt-4 pt-md-0 p-md-0 text-center text-md-left" >
+              <div class="m-2">
+                <p class="cnpj m-0">CNPJ 39.233.599/0001-49</p>
+                <p class="cnpj m-0">Rua João Pessoa, 756 - Centro</p>
+                <p class="cnpj m-0">São Caetano do Sul/SP - 09520-010</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</footer>
+<div class="col-12 mb-2 text-center" style="background-color: white;">
+  <small style="color: rgba(147, 39, 143, 1)">
+    <strong>
+      @2022 | Faça Acordo. Todos os direitos reservados.
+    </strong>
+  </small>
+</div>

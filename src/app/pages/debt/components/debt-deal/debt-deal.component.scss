@@ -1,0 +1,43 @@
+figure, .card {
+  border-radius: 15px;
+}
+.card {
+  background-color: white;
+  border-radius: 25px;
+  border: 1px solid !important;
+}
+
+h2 {
+  color: #000 !important;
+  font-family: 'arial' !important;
+}
+
+p {
+  color: #000000;
+  margin: 0px;
+}
+
+button{
+  border-radius: 25px !important;
+  transition: all 0.4s;
+}
+
+.text-green{
+  color: rgb(13, 212, 142) !important;
+}
+
+.no-padding{
+  padding: 0 !important;
+  font-size: 0.9em !important;
+}
+
+@media (max-width: 490px){
+  h2 {
+    font-size: 1.2em !important;
+    }
+
+    p {
+      font-size: 12px !important;
+    }
+
+}

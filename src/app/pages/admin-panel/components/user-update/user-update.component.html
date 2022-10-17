@@ -1,0 +1,5 @@
+<div class="row no-gutters">
+    <div class="col-12">
+        <app-user-form *ngIf="userChange" [formType]="userChange" (userSubmit)="submitIt($event)"></app-user-form>
+    </div>
+</div>

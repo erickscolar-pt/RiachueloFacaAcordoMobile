@@ -1,0 +1,25 @@
+<div class="container-fluid home-page py-md-5 align-items-center">
+  <div class="container py-5">
+    <div class="row a mt-1 py-md-2">
+      <div class="col-12 col-md-5 lead fadeIn p-0 text-center text-md-left" >
+        <div class="pt-4 mt-md-4">
+          <h1 class="lead-title main">VEM PRA FAÇA, A GENTE TE AJUDA</h1>
+          <div class="col-12 p-0">
+            <p class="lead-text">Recupere hoje o controle das suas finanças quitando seus débitos com a Riachuelo!</p>
+          </div>
+          <div class="mx-auto" *ngIf="!auth.isAuthenticated()">
+            <button class="btn btn-theme debt pl-md-5 pr-md-5" (click)="entrar()">
+             Consultar meus débitos
+            </button>
+           </div>
+          <div *ngIf="auth.isAuthenticated()" class="col-12 text-md-left my-2 p-0">
+            <button class="btn btn-theme home" (click)="navigate()">Meus débitos</button>
+          </div>
+        </div>
+      </div>
+      <div  class="col-12 col-md-7 img-note">
+        <img src="./../../../assets/img/imagem_note_site-w.png" />
+      </div>
+    </div>
+  </div>
+</div>

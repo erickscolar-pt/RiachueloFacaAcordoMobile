@@ -1,0 +1,33 @@
+.footer{
+  background: rgba(147, 39, 143, 1);
+  overflow: hidden;
+}
+
+p{
+  color: white;
+}
+
+.title{
+  color: rgba(0, 255, 254, 1) !important;
+  font-weight: bold;
+}
+
+a{
+  text-decoration: none !important;
+  color: white !important;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.cnpj{
+  font-size: 0.9em !important;
+}
+
+@media screen and (max-width: 830px) {
+  a{
+    font-size: 1.1em;
+  }
+  .cnpj{
+    font-size: 1.1em !important;
+  }
+}

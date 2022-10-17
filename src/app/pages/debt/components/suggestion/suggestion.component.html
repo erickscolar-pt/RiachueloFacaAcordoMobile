@@ -1,0 +1,53 @@
+<div class=" h-100 py-5">
+  <div class="container">
+    <div class="row no-gutters py-5 justify-content-center">
+      <div class="row no-gutters text-center py-5 ">
+        <div class="col-12 col-sm-10 mx-auto card p-5 border-0 riachuelo">
+          <div class="row no-gutters">
+            <div class="col-12">
+              <div *ngIf="isNotFound">
+                <h2>Não localizamos em nossa base<span style="color: #2cf494"> dívidas ativas.</span></h2>
+                <p>Se preferir, entre em conosco através dos nossos canais de atendimento: </p>
+              </div>
+              <div *ngIf="isRedirect">
+                <h2>Você precisa de um <span style="color: #2cf494">atendimento especial.</span></h2>
+                <p>Por isso, entre em contato conosco através dos nossos canais de atendimento: </p>
+              </div>
+              <div *ngIf="isTicket">
+                <h2>Poxa, que pena! Estamos com problemas para gerar seu boleto pelo nosso portal.</h2>
+                <p>Por isso, entre em contato conosco através dos nossos canais de atendimento: </p>
+              </div>
+              <div *ngIf="isDealFail">
+                <h2>Poxa, que pena! Tivemos um problema pra finalizar<span style="color: #2cf494"> sua negociação.</span></h2>
+                <p>Por isso, entre em conosco através dos nossos canais de atendimento: </p>
+              </div>
+              <div *ngIf="isLoading">
+                <h2>Você já tem uma proposta<span style="color: #2cf494"> em andamento</span>. Por favor aguardar.</h2>
+                <p>Caso tenha dúvidas, por favor entre em contato conosco: </p>
+              </div>
+            </div>
+            <div class="row col-12 justify-content-center contacts">
+<!--               <a matTooltip="@Skype" href="https://join.skype.com/bot/5827537e-301a-4e2c-b4f4-b7aaeda4dcd2"
+                target="_blank" class="col-2">
+                <img width="80" src="./../../../../assets/img/home/skype.png" alt="">
+              </a> -->
+<!--               <a matTooltip="@Messenger" href="https://www.facebook.com/facaacordo" target="_blank" class="col-2">
+                <img width="80" src="./../../../../assets/img/home/messenger.png" alt="">
+              </a> -->
+              <a matTooltip="(11) 964392624"
+                href="https://api.whatsapp.com/send?phone=5511964392624&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato"
+                target="_blank" class="col-2">
+                <img width="80" src="./../../../../assets/img/home/whatsapp.png" alt="">
+              </a>
+<!--               <a href="https://w.mkmservice.com/#/chat/31f8e9119bcb3af829bf207598a40b47" target="_blank" class="col-2">
+                <img width="80" src="./../../../../assets/img/home/central.png" alt="">
+              </a> -->
+              <a matTooltip="digital@facaacordo.com.br" (click)="openMailForm()" target="_blank" class="col-2">
+                <img width="80" src="./../../../../assets/img/home/email.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

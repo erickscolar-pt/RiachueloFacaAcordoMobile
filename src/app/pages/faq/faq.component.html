@@ -1,0 +1,29 @@
+<div class="container-fluid faq py-5">
+  <div class="row no-gutters text-center">
+    <div class="col-12 col-md-8 mx-auto card p-5 my-5 border-0 position-relative riachuelo">
+      <div class="row no-gutters">
+        <div class="col-12 pb-4">
+          <h2 class="text-center">FAQ</h2>
+        </div>
+        <div class="col-12 col-lg-6" *ngFor="let faqs of listaFaqs">
+          <div class="row no-gutters">
+            <div class="col-12 px-3 text-left" *ngFor="let faq of faqs;index as i">
+              <h3>{{ i+1 }}. {{ faq?.title }}</h3>
+              <span [innerHTML]="faq.text"></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <h3>Se ainda houver dúvida entre em contato conosco</h3>
+          <div class="pt-3">
+            <button type="button" class="btn btn-theme" routerLink="/debt" routerLinkActive="active" >
+              Voltar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 position-relative text-center mb-5">
+    </div>
+  </div>
+</div>

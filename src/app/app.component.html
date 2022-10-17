@@ -1,0 +1,17 @@
+<app-main-nav></app-main-nav>
+<router-outlet></router-outlet>
+<!-- <app-widget></app-widget> -->
+<app-snack-bar></app-snack-bar>
+<div class="my-container">
+    <ng-template #customLoadingTemplate>
+        <div class="">
+            <div class="main">
+                <!-- <div class="loads text-center">
+                    <img src="../assets/img/carregamento.gif" width="200">
+                </div> -->
+            </div>
+        </div>
+    </ng-template>
+    <ngx-loading [show]="loading.isLoading" [config]="{ backdropBorderRadius: '3px',  backdropBackgroundColour: 'rgba(205,159,255,0.3)' }"
+        [template]="customLoadingTemplate"></ngx-loading>
+</div>

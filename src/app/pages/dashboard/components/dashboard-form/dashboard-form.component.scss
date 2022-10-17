@@ -1,0 +1,16 @@
+.container-fluid{
+    padding-top: 15%;
+}
+
+::ng-deep .mat-form-field-infix {
+    padding-bottom: 0.5rem !important;
+  }
+
+  ::ng-deep .mat-form-field-infix {
+    color: black !important;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before {
+    background-color: black !important;
+  }
+  

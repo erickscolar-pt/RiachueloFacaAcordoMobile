@@ -1,0 +1,24 @@
+.card{
+    border-radius: 15px;
+}
+p{
+    color: white;
+    margin: 0px;
+}
+/deep/.jp-card{
+    min-width: 0px!important;
+}
+/deep/.mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    background-color: #583f99;
+}
+
+/deep/.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #583f99;
+}
+
+button {
+  background-color:  rgba(51,51,51,1) !important;
+}
+button:hover {
+    background-color: gray !important;
+  }

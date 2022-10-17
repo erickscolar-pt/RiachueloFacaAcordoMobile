@@ -1,0 +1,13 @@
+<mat-form-field class="col-12 p-0" appearance="outline">
+  <input matInput placeholder="CPF ou CNPJ" [mask]="mask" appCpfCnpj [formControl]="cpfOrCnpj">
+  <fa-icon class="position-absolute" [icon]="cpfIcon"></fa-icon>
+  <mat-error *ngIf="cpfOrCnpj.hasError('required')">
+    É necessário inserir CPF ou CNPJ
+  </mat-error>
+  <mat-error *ngIf="cpfOrCnpj.hasError('invalidCpf') && cpfOrCnpj.invalid">
+    CPF inválido
+  </mat-error>
+  <mat-error *ngIf="cpfOrCnpj.hasError('invalidCnpj') && cpfOrCnpj.invalid">
+    CNPJ inválido
+  </mat-error>
+</mat-form-field>

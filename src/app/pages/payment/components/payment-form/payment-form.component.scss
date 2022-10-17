@@ -1,0 +1,129 @@
+/deep/.mat-radio-label-content, p{
+  color: black;
+  margin: 0px;
+  font-size: 1.2em;
+}
+.botao-met-pagamento /deep/.mat-radio-outer-circle{
+  display: flex;
+}
+
+.imgCenter{
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-content: center !important;
+  align-items: center !important;
+    .img-boleto{
+      margin-left: 0;
+    }
+    .img-credicard{
+      margin-left: 0;
+    }
+}
+
+.btn {
+  border-radius: 25px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  font-family: 'arial' !important;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.campo-boleto {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+.img-boleto{
+  width: 88px;
+  margin-left: 40px;
+}
+
+.img-credicard{
+  width: 305px;
+  margin-left: 40px;
+}
+
+.botao-met-pagamento /deep/.mat-radio-label-content{
+  background-color: #fff !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 105px;
+  height: 30px !important;
+}
+
+.botao-met-pagamento /deep/.mat-radio-container {
+  display: flex;
+}
+
+.btn-conf-acordo{
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  border-radius: 12px !important;
+}
+
+.titulo{
+  color: black;
+  font-size: 20px !important;
+}
+
+/deep/.mat-radio-checked{
+  .mat-radio-outer-circle{
+      display: flex !important;
+      border-color:  rgba(0, 0, 0, 1) !important;
+  }
+  .mat-radio-inner-circle{
+      display: flex !important;
+      background-color:   #7511a9 !important;
+  }
+}
+.botao-met-pagamento /deep/.noneMatRadio{
+  display: flex!important;
+}
+
+/deep/ .mat-radio-button {
+  display: flex !important;
+  outline: 0 !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  align-content: flex-start !important;
+  align-items: flex-start !important;
+}
+
+.btn_bradesco {
+  background-color:  rgba(51,51,51,1) !important;
+  border: rgba(51,51,51,1) !important;
+}
+
+
+
+@media (max-width: 600px) {
+  .img-credicard {
+    width: 190px;
+  }
+
+  .img-boleto {
+    width: 70px;
+  }
+
+  .titulo {
+    font-size: 17px !important;
+  }
+
+  .mat-radio-label-content, p {
+    font-size: 1.1em !important;
+  }
+  .btn-confac{
+    font-size: 14px !important;
+  }
+}

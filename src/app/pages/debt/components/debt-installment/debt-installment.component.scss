@@ -1,0 +1,260 @@
+mat-slider {
+  width: 100%;
+}
+
+.direita{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.titulo{
+  color: black !important;
+  font-size: 25px !important;
+}
+
+.msg-valores{
+  color: black;
+  font-size: 15px;
+  /* padding: 5px; */
+  /* margin: 5px; */
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.data-vencimento{
+  color: black;
+  padding: 5px;
+  font-size: 15px;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.direita button{
+  align-items: center;
+  align-content: center;
+  border-radius: 15px;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  font-size: 13px;
+  height: 35px;
+  justify-content: center;
+  width: 100px;
+  text-align: center;
+}
+
+.parcela-span{
+  text-align: center;
+}
+
+p {
+  color: black !important;
+  font-size: 20px !important;
+}
+
+.parcelas-caixa{
+  background-color: white;
+  border:1px solid black !important ;
+  padding: 15px;
+}
+
+.container-fluid {
+  background-size: cover;
+  background-position: center;
+}
+
+.input-data-agendamento{
+  background: #F2F6F7 !important;
+  color: #000 !important;
+  border: 1px solid #c7c7c7 !important;
+  outline: 0 !important;
+  padding: 15px !important;
+  margin: 10px !important;
+  width: 89% !important;
+  max-width: 100% !important;
+  vertical-align: baseline !important;
+  text-align: center!important;
+  border-radius: 10px !important;
+  font-size: 20px !important;
+}
+
+/deep/ .parcela .mat-radio-label-content{
+  color: white !important;
+  padding: 8px;
+  background-color: #7511a9;
+  width: 110px;
+  border-radius: 5px;
+  border: 1px solid #7511a9;
+  margin: 0 !important;
+  height: 35px;
+  display: flex !important;
+  order: 0 !important;
+  line-height: inherit !important;
+  padding-left: 8px !important;
+  padding-right: 0 !important;
+  align-content: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/deep/ .parcela .mat-radio-label-content:hover{
+    background-color: #fff;
+    color: #7511a9 !important;
+    border: 1px solid #7511a9;
+  }
+
+/deep/ .parcela .mat-radio-label-content, p {
+  color: #fff;
+  margin: 0px;
+}
+
+/deep/ .parcela .mat-radio-outer-circle {
+  display: none;
+}
+
+/deep/ .parcela .mat-radio-checked {
+  .mat-radio-outer-circle {
+    display: none !important;
+  }
+
+  .mat-radio-inner-circle {
+    display: none !important;
+  }
+}
+
+
+.texto{
+  font-size: 15px;
+}
+
+.btn {
+  border-radius: 35px !important;
+  padding-left: 5em;
+  padding-right: 5em;
+}
+
+.btn:hover {
+  color: #7511a9 !important;
+  background-color: #fff !important;
+  border: 1px solid #7511a9 !important;
+}
+
+.frase-agendamento{
+  font-size: 1em !important;
+}
+
+.btn-agendamento{
+  padding-left: 7em;
+  padding-right: 7em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-agendamento-back{
+  padding: 0px !important;
+  background-color: #fff !important;
+  background: url("../../../../../assets/img//btn-back.png") no-repeat center ;
+  padding: 18px !important;
+}
+
+.btn-agendamento-back:hover{
+  padding: 0px !important;
+  background-color: #7511a9 !important;
+  background: url("../../../../../assets/img//btn-back-two.png") no-repeat center ;
+  padding: 18px !important;
+}
+
+.agendamento-component{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-caixa-agendamento{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media (max-width: 490px){
+  .texto{
+    font-size: 12px;
+  }
+  .btn-agendamento{
+    font-size: 12px;
+    display: inline-grid;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+  }
+  .frase-agendamento{
+    font-size: 13px!important;
+  }
+  .btn-agendamento-back{
+    background: url("../../../../../assets/img//btn-back.png") no-repeat center ;
+    padding: 0px !important;
+    background-color: #fff !important;
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+    padding-right: 2px;
+    padding-left: 2px;
+  }
+  .btn-agendamento-back:hover{
+    background: url("../../../../../assets/img//btn-back-two.png") no-repeat center ;
+    padding: 0px !important;
+    background-color: #7511a9 !important;
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+    padding-right: 2px;
+    padding-left: 2px;
+  }
+  .agendamento-component{
+    flex: 0 0 83.333333%;
+    max-width: 90.333333%;
+  }
+}
+
+@media (max-width: 1490px) and (min-width: 601px){
+/*   /deep/ .mat-radio{
+    display: flex !important;
+  } */
+
+  .btn-agendamento{
+    font-size: 12px;
+    display: inline-grid;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+  }
+
+  /deep/ .parcela .mat-radio-label-content {
+    padding: 5px;
+    width: 90px;
+    font-size: 13px;
+    margin: 0 !important;
+    height: 30px;
+    padding-left: 0px !important;
+    margin: 0px !important;
+  }
+
+}

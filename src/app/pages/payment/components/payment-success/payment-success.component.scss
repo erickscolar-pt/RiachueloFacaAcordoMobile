@@ -1,0 +1,153 @@
+.card{
+  border-radius: 15px;
+}
+h3{
+  font-size: 1.5em;
+}
+h4{
+  font-size: 1.3em;
+}
+h4, h3, h2, h1{
+  color: #333333 !important;
+}
+.position-absolute{
+  top: 25%;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  font-family: 'arial' !important;
+  font-weight: 100 ;
+  font-size: 20px;
+  -webkit-text-decoration-skip: objects;
+}
+
+.t-1{
+  font-size: 30px;
+  color: #000;
+}
+
+.t-2{
+  font-size: 35px;
+  color: #000;
+}
+
+.text-green{
+ color: rgb(13, 212, 142) !important;
+}
+
+.text-orange{
+  color: rgba(233, 128, 30 ,1) !important;
+}
+
+.img-pontos{
+  border: 1px solid #000;
+  border-radius: 70px;
+  width: 100px;
+  height: 100px;
+  padding: 15px;
+  background: white;
+}
+
+.position-pontos{
+  position: absolute;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 200px;
+}
+
+.pontos-msg{
+  border: 1px solid #000;
+  border-radius: 30px;
+  padding-top: 25px;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 28px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.caixa-pontos{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.desconto-caixa{
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.desconto{
+  background-color: #7511a9 ;
+  border-top-right-radius: 15px;
+  position: absolute;
+  height: 130px;
+  width: 130px;
+  margin: 15px;
+  clip-path: polygon(0% 0, 100% 0%, 100% 100%, 50% 50%);
+/*   margin-left: 62%; */
+}
+.desconto span{
+  color: #fff !important;
+  font-size: 20px !important;
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: stretch;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 13px;
+}
+
+.caixa-direita{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: stretch;
+}
+
+.caixa-direita b{
+  font-size: 25px;
+}
+
+.caixa-direita span{
+  font-size: 20px;
+}
+
+.roxo{
+    color: #7511a9 ;
+}
+
+@media (max-width: 490px){
+  .full-name{
+      margin-top: 6rem !important;
+  }
+
+  .caixa-pontos{
+      margin-bottom: 2em;
+  }
+
+  .pontos-msg {
+    padding-top: 15px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 25px;
+  }
+
+}
