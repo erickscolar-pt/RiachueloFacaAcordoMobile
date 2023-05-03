@@ -1,10 +1,4 @@
-@media screen and (max-width: 798px) {
-  .contacts{
-    img{
-      width: 50px !important;
-    }
-  }
-}
+
 p{
   color: gray !important;
 }
@@ -18,4 +12,22 @@ a:hover{
     -moz-transform: rotate(-30deg);
     -o-transform: rotate(-30deg);
     transform: rotate(-30deg);
+}
+
+@media screen and (max-width: 798px) {
+  .contacts{
+    img{
+      width: 50px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card{
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 5px !important;
+    h2, p{
+      color: #fff !important;
+    }
+  }
 }

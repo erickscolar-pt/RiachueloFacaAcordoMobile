@@ -46,7 +46,7 @@ export class MainNavComponent implements DoCheck {
 
 
     if(opt == "whatsapp"){
-      return window.open("https://api.whatsapp.com/send?phone=5511964392624&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato")
+      return window.open("https://api.whatsapp.com/send?phone=5511963610672&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato")
     }
 
     if(opt == "lojavirtual"){
@@ -130,7 +130,7 @@ export class MainNavComponent implements DoCheck {
 
   public navigate(opt){
     if(opt == "whatsapp"){
-      return window.open("https://api.whatsapp.com/send?phone=5511964392624&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato")
+      return window.open("https://api.whatsapp.com/send?phone=5511963610672&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato")
     }
     if(opt == "blog"){
       return window.open("https://blog.facaacordo.com.br")

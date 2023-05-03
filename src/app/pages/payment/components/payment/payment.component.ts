@@ -18,16 +18,21 @@ export class PaymentComponent implements AfterViewChecked {
   @Input() public hasErrorCC : boolean;
   @Input() public jocker : boolean;
   @Input() public isCardTrue : boolean;
+  @Input() public open : boolean;
   @Input() public checkMetedVenOrSal : boolean;
+  @Input() public optionNegocia : boolean;
   @Output() generateCCPlot = new EventEmitter();
   @Output() generateTicketPlot = new EventEmitter();
   @Output() generatePixPlot = new EventEmitter();
   @Output() selectCreditCard = new EventEmitter();
+  @Output() viewDebtProfile = new EventEmitter();
   @Output() optionPayBack: boolean = true;
   public ocultaTela: boolean = false;
   public papai = false;
   public papai2 = false;
   public ocultaOpcBlt: boolean = false;
+  public hide: boolean = true;
+  public selectDebt: any;
 
   constructor(
     private gaAnalytics: GoogleAnalyticsService,
@@ -37,17 +42,37 @@ export class PaymentComponent implements AfterViewChecked {
 
   ngAfterViewChecked() {
     this.cdRef.detectChanges();
+    //console.log('open => ' + this.open)
   }
 
   ngOnInit() {
     this.ocultaBtnVOrS = this.checkMetedVenOrSal
     this.optionPayBack = true;
     this.ocultaTela = this.isCardTrue
+    //console.log('open => ' + this.open)
+    if(this.open == undefined){
+      this.hide = true;
+      this.selectCreditCard.emit(false);
+      this.plotOption = true;
+      this.optionPayBack = false;
+      this.ocultarBtn = true;
+    }
   }
 
   ngOnChanges(){
     this.ocultaTela = this.isCardTrue
     this.optionPayBack = true;
+    //console.log('open => ' + this.open)
+    if(this.open == false){
+      this.hide = true;
+      this.optionCardBack();
+    }
+
+  }
+
+  debtSelect(event){
+    //console.log(event)
+    this.selectDebt = event;
   }
 
   public optionCardBack(){
@@ -57,8 +82,12 @@ export class PaymentComponent implements AfterViewChecked {
     this.ocultarBtn = true;
   }
 
+  hideOpcPagamento(event){
+    this.hide = event;
+    this.ocultarBtn = true;
+  }
+
   public getPaymentOption(event) {
-    //console.log('evento => ' + event)
 
     if(event == 'TICKET'){
       this.ocultaOpcBlt = true;
@@ -79,7 +108,6 @@ export class PaymentComponent implements AfterViewChecked {
   }
 
   public volta(event){
-    console.log(event)
     this.ocultaTela = event
   }
 
@@ -90,8 +118,12 @@ export class PaymentComponent implements AfterViewChecked {
   //  this.generateCCPlot.emit(this.createDTO(event));
   }
 
+  public backProfile(event){
+    this.ocultaTela = event;
+    this.viewDebtProfile.emit(event)
+  }
+
   public voltarMetodoPagamento(event){
-    console.log(event)
     if(event == true){
 
     this.selectCreditCard.emit(false);

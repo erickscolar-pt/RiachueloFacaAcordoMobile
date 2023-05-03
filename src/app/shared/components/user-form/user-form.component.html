@@ -26,7 +26,7 @@
       </mat-error>
     </mat-form-field>
 
-    <div class="form-group row no-gutters lead-search mx-auto p-md-0 coringa" *ngIf="formTypeStr=='search'">
+    <div class="form-group search-mobile row no-gutters lead-search mx-auto p-md-0 coringa" *ngIf="formTypeStr=='search'">
       <div class="row no-gutters">
         <input class="form-control col-12" (keyup)="onKey($event)" placeholder="Digite seu CPF" [mask]="mask" appCpfCnpj formControlName="cpfOrCnpj" required>
         <button class="btn btn-consulta col-md-2 pb-md-2 pt-md-2 p-1" style="z-index:2">

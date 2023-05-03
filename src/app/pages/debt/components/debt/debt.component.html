@@ -3,25 +3,31 @@
     <ng-container class="col-12 col-md-4">
       <app-debt-profile
         class="col-12 col-md-4 mb-3"
+        *ngIf="hideDebtProfile"
         [debt]="company"
         (getPayment)="changeTradingOptions($event)"
         (validTrueCard)="validTrueCard($event)"
-        (vencidaOrVencer)="vencidaOrVencer($event)">
+        (vencidaOrVencer)="vencidaOrVencer($event)"
+        (backMobile)="backMobile($event)"
+        >
       </app-debt-profile>
     </ng-container>
     <ng-container class="col-12 col-md-4">
       <app-payment
-        class="col-12 col-md-4 mb-3"
+        class="col-12 col-md-4 mb-3 mobile-payment-form"
         *ngIf="isPayment || hasErrorCC"
         [debt]="company"
         [hasErrorCC]="hasErrorCC"
         [isCardTrue]="isCardTrue"
+        [open]="open"
         [checkMetedVenOrSal]="venOrSaldoTotal"
+        [optionNegocia]="optionNegocia"
         [jocker]="company.jocker"
         (generateCCPlot)="generateCCPlot($event)"
         (generateTicketPlot)="generateTicketPlot($event)"
         (generatePixPlot)="generatePixPlot($event)"
         (selectCreditCard)="creditCardSelect($event)"
+        (viewDebtProfile)="viewDebtProfile($event)"
         >
       </app-payment>
     </ng-container>
@@ -51,7 +57,9 @@
         class="col-12 col-md-4 mb-9"
         *ngIf="isCC && !hasErrorCC && !isTicket && backCard"
         [debt]="company"
-        (errorCC)="checkErrorCC($event)">
+        (errorCC)="checkErrorCC($event)"
+        (hideCreditOpenOption)="hideCreditOpenOption($event)"
+        >
       </app-payment-credit-card>
     </ng-container>
   </div>

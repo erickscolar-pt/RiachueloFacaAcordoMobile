@@ -42,3 +42,8 @@ figcaption{
 /* /deep/ .mat-radio-label-content, p {
   color: #fff !important;
 } */
+@media (max-width: 600px) {
+  .mobile-payment{
+    padding: .5em !important;
+  }
+}

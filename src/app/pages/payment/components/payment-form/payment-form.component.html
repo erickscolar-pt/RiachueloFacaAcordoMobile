@@ -1,32 +1,50 @@
+<p class="titulo mobile mb-4" *ngIf="!isSubmitted">Escolha a melhor forma de pagamento</p>
 <form [formGroup]="paymentForm" novalidate (ngSubmit)="onSubmit()">
   <div class="row no-gutters">
     <div class="col-12">
-      <p class="titulo mb-4" *ngIf="!isSubmitted">Escolha uma opção de pagamento:</p>
+      <p class="titulo web mb-4" *ngIf="!isSubmitted">Escolha uma opção de pagamento:</p>
       <p class="titulo mb-4" *ngIf="isSubmitted">Forma de pagamento selecionada.</p>
+      <div class="caixa-msg-valores mobile">
+        <p class="msg mb-4">Valor total negociado:</p>
+        <div class="box mb-4">
+          <p>
+          1x {{ valorEntrada | currency : 'BRL' }}
+          <span *ngIf="(parcela - 1) != 0">
+            + {{ demaisParcela }}x {{ valorDemais | currency : 'BRL' }}
+          </span>
+          </p>
+        </div>
+        <div class="box mb-4"><p>Vencimento em: {{ dataVencimento | date:'dd/MM/yyyy'  }}</p></div>
+      </div>
     <mat-radio-group
         formControlName="paymentOption">
-        <mat-radio-button
+        <div class="botao-pagamento">
+          <mat-radio-button
           class="col-12 justify-content-center botao-met-pagamento mt-2"
           [value]="paymentMethod.TICKET"
           [ngClass]="{'noneMatRadio': isSubmitted}"
           *ngIf="!isSubmitted">
           <p *ngIf="!isSubmitted" class="">Boleto</p>
-        </mat-radio-button>
-        <div *ngIf="imgBoleto == true" class="campo-boleto" [ngClass]="{'imgCenter': isSubmitted}">
-            <img src="./../../../../../assets/img/payment/boleto2.png" class="img-boleto" alt="">
+          </mat-radio-button>
+          <div *ngIf="imgBoleto == true" class="campo-boleto" [ngClass]="{'imgCenter': isSubmitted}">
+              <img src="./../../../../../assets/img/payment/boleto2.png" class="img-boleto" alt="">
+          </div>
         </div>
-        <mat-radio-button
+        <div class="botao-pagamento">
+          <mat-radio-button
           class="col-12 justify-content-center botao-met-pagamento mt-2"
           [value]="paymentMethod.CREDITCARD"
           [ngClass]="{'noneMatRadio': isSubmitted}"
           *ngIf="!isSubmitted"
           (click)="selectCard()">
           <p *ngIf="!isSubmitted" class="">Cartão</p>
-        </mat-radio-button>
-        <div class="col-12 text-left" *ngIf="imgCartao == true" [ngClass]="{'imgCenter': isSubmitted}">
-          <img src="./../../../../../assets/img/payment/credtcard2.png" class="img-credicard" alt="">
+          </mat-radio-button>
+          <div class="col-12 text-left" *ngIf="imgCartao == true" [ngClass]="{'imgCenter': isSubmitted}">
+            <img src="./../../../../../assets/img/payment/credtcard2.png" class="img-credicard" alt="">
+          </div>
         </div>
-        <div class="col-12 text-left pl-3 pr-3 pt-3" *ngIf="valorCartao && debt.plotSelected.numero > '1'">
+
+        <div class="col-12 web text-left pl-3 pr-3 pt-3" *ngIf="valorCartao && debt.plotSelected.numero > '1'">
           <p>A realização do pagamento através do cartão de crédito acarreta na redistribuição dos valores para parcelas iguais, ficando {{ debt.plotSelected.numero }}x de {{ valorCartao | currency : 'BRL'}}</p>
         </div>
       </mat-radio-group>
@@ -42,7 +60,8 @@
   </div>
 </form>
 <!-- Botão para continuar caso selecione cartão vai fazer outra coisa -->
-<div class="row no-gutters mt-5 justify-content-center" *ngIf="!isSubmitted">
-  <button class="btn btn-theme col-4 mr-2" (click)="selectTicket(true)">Continuar</button>
+<div class="row no-gutters mt-5 justify-content-center caixa-btn-mobile" *ngIf="!isSubmitted">
+  <button class="btn btn-theme col-4 mr-2 mobile" (click)="selectTicketMobile(false)">Continuar</button>
+  <button class="btn btn-theme col-4 mr-2 web" (click)="selectTicket(true)">Continuar</button>
   <button class="btn btn-theme col-4" (click)="opcParcelamento(true)">Voltar</button>
 </div>

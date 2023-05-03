@@ -1,0 +1,126 @@
+.lead, p {
+    //color:  rgba(51, 51, 51, 1) !important;
+    color: rgba(255, 255, 255, 1) !important;
+  }
+  
+  .web{ display: inherit; }
+  
+  .lead-text{
+    color: rgba(255, 255, 255, 1) !important;
+  }
+  .mobile{
+    display: none;
+  }
+  .a{
+    margin-top: 8%;
+  }
+  
+  .home{
+    background-color: rgba(147, 39, 143, 1) !important;
+  }
+  .home:hover{
+    background-color: rgba(0, 100, 100, 1) !important;
+    border: 1px solid white !important;
+    color: white !important;
+  }
+  .home-page{
+    //background: -moz-linear-gradient(30% -2579.98% 30deg, rgba(92, 122, 167 ,1) 30%, rgba(89, 191, 217 ,1) 100%);
+    //background: -webkit-linear-gradient(30deg, rgba(92, 122, 167 ,1) 30%, rgba(89, 191, 217 ,1) 100%);
+    //background: -webkit-gradient(linear, 30% -2579.98%, 100% -2579.98%, color-stop(0, rgba(92, 122, 167 ,1)), color-stop(1, rgba(89, 191, 217 ,1)));
+    //background: -o-linear-gradient(30deg, rgba(92, 122, 167 ,1) 30%, rgba(89, 191, 217 ,1) 100%);
+    //background: -ms-linear-gradient(30deg, rgba(92, 122, 167 ,1) 30%, rgba(89, 191, 217 ,1) 100%);
+    //-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#513C8B', endColorstr='#84BCE7' ,GradientType=0)";
+    //background: linear-gradient(30deg, rgb(0, 45, 112) 30%, rgb(0, 109, 136) 100%);
+    //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#513C8B', endColorstr='#84BCE7', GradientType=1);
+    background-image: url('../../../assets/img/logos/Fundo/fundo_geral.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+  }
+  h1{
+    font-size: 2.4em;
+  }
+  @media screen and (max-width: 830px) {
+    .lead, p {
+      font-size: 1em !important;
+    }
+    .main{
+      font-size: 2.2em !important;
+    }
+    .security{
+      width: 30px !important;
+    }
+  
+  }
+  /* regra css para telas com 2x a densidade de  pixel */
+  @media (max-width: 600px) {
+    .web{ display: none; }
+    .ocultar-web{
+      display: none;
+    }
+    .mobile{
+      display: initial;
+      .mobile-caixa-1{
+        background: #fff;
+        margin-top: 3.8em;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        .lead-text{
+          color: rgb(0, 0, 0) !important;
+          .roxo{
+            color: #C978D7;
+            font-weight: bold;
+          }
+        }
+        .text-mobile{
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          align-content: center;
+          justify-content: center;
+          align-items: stretch;
+          font-size: 2vh;
+          padding-left: 4vh;
+        }
+      }
+      .mobile-caixa-2{
+        background: #fff;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+        padding: 1em;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        .caixa-security{
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-content: center;
+          justify-content: center;
+          align-items: center;
+          margin: 0;
+          padding: 0;
+        }
+        .btn-debt{
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-content: center;
+          justify-content: center;
+          align-items: center;
+        }
+  
+        p{
+          color: #000 !important;
+        }
+      }
+    }
+   }
+  
+  
+  

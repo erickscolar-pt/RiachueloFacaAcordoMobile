@@ -1,5 +1,26 @@
+.mobile-vencido{
+  display: none;
+}
+.mobile-caixa-btns{
+  .btn-mobile{
+    display: none;
+  }
+  .btn-web{
+    display: inline-block;
+  }
+}
 .card {
   border-radius: 15px;
+  .saldo-vencido-a-vencer-web{
+    display: inline-block;
+  }
+}
+
+.web-de-por-ate{
+  display: inline-block;
+}
+.mobile-de-por-ate{
+  display: none;
 }
 
 .text-title{
@@ -60,7 +81,7 @@
   position: relative;
 }
 
-.desconto-caixa{
+.desconto-caixa-web{
   position: absolute;
   display: flex;
   width: 88%;
@@ -165,6 +186,178 @@ h3{
 }
 
 @media (max-width: 600px) {
+  .mobile-vencido{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    max-height: 900px;
+    .flex-mobile{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      padding: 3em;
+      p{
+        color: #FFFFFF !important;
+        font-size: 1.6em !important;
+        margin-bottom: 3em;
+      }
+      .radio-group{
+        margin-bottom: 2em;
+        .radio-button{
+          margin-bottom: 5em;
+        }
+        /deep/ .radio-button .mat-radio-label-content {
+          color: #FFF !important;
+        }
+        /deep/ .radio-button .mat-radio-outer-circle {
+          border-color: #9F36C3 !important;
+          background-color: #FFFFFF !important;
+        }
+        /deep/ .mat-radio-button.mat-accent .mat-radio-inner-circle {
+          background-color: #FFFFFF;
+        }
+        /deep/ .mat-radio-checked .mat-radio-inner-circle {
+          background-color: #9F36C3 !important;
+        }
+
+        .mat-radio-checked .mat-radio-outer-circle {
+          border-color: #9F36C3 !important;
+        }
+      }
+
+    }
+  }
+  .hide-mobile{
+    display: none;
+  }
+  .caixa-saldos-descontos{
+    display: none;
+  }
+  .mobile-caixa-btns{
+    .btn-mobile{
+      display: inline-block;
+    }
+    .btn-web{
+      display: none;
+    }
+  }
+  .oferta{
+    width: 100% !important;
+    background: #9F36C4 !important;
+    border-radius: 6px !important;
+    max-width: 31em !important;
+    height: 4em !important;
+  }
+  .card {
+    border: none !important;
+    height: auto !important;
+    background: rgba(255, 255, 255, 0.31) !important;
+    border-radius: 5px !important;
+
+    .desconto-caixa-web{
+      display: none;
+    }
+    .mobile{
+      .saldo-vencido-a-vencer-web{
+        display: none;
+      }
+      .hide-caixa-cliente{
+        display: none !important;
+      }
+      .text-title{
+        color: #FFFFFF !important;
+      }
+      .caixa-img{
+        /* background: #fff; */
+        padding: 0px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .mobile-desc{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+      .contrato{
+        background: #FFFFFF;
+        border-radius: 3px;
+        width: 100%;
+        padding: 0.5em;
+        display: inline-block;
+        margin-bottom: 1em;
+        font-size: 1em !important;
+      }
+      .descricao{
+        background: #FFFFFF;
+        border-radius: 3px;
+        width: 100%;
+        padding: 0.5em;
+        display: inline-block;
+        margin-bottom: 1em;
+        font-size: 1em !important;
+      }
+      .dias-em-atraso-flex{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: center;
+        align-items: stretch;
+        width: 100%;
+        font-size: 1em !important;
+
+        .dias-em-atraso{
+          background: #FFFFFF;
+          border-radius: 3px;
+          width: 100%;
+          padding: 0.5em;
+          display: inline-block;
+          margin-bottom: 1em;
+        }
+        .web-de-por-ate{
+          display: none !important;
+        }
+        .mobile-de-por-ate{
+          display: flex !important;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-content: center;
+          align-items: center;
+          justify-content: space-around;
+          margin-bottom: 1em;
+          .desconto-mobile{
+            background: linear-gradient(180deg, #8970CF 0%, #C04FFF 55.21%, #A142C2 100%);
+            border-radius: 3px;
+            width: 4.2em;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-content: center;
+            justify-content: center;
+            span{
+              color: #FFFFFF;
+            }
+          }
+        }
+      }
+
+
+    }
+  }
   .line-debt-itens {
     margin-top: 40px !important;
   }
@@ -174,10 +367,12 @@ h3{
   }
 
   .description-ofertas{
-    font-size: 15px !important;
+    display: none !important;
   }
 
   .btn {
-    font-size: 13px;
+    font-size: 15px;
   }
+
+
 }

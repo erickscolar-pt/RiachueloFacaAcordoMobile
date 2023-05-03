@@ -16,7 +16,7 @@ p.titulo-card{
   font-size: 30px !important;
 }
 
-.color-teste{
+.color-card{
   background-color: #F0F0F0;
   border-radius: 0px;
   margin: 5px;
@@ -147,5 +147,68 @@ button{
   }
   87.5% {
     box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+
+@media (max-width: 600px){
+  .web{
+    display: none;
+  }
+  .card-full{
+    background-color: transparent !important;
+    border: none !important;
+
+    p.titulo-card{
+      color: #fff;
+    }
+
+    .color-card{
+      background: rgba(255, 255, 255, 0.31) !important;
+      border-radius: 6px !important;
+
+      padding: 2em !important;
+    }
+
+    .contrato{
+      background: #FFFFFF;
+      border-radius: 3px;
+      width: 100%;
+      padding: 0.5em;
+      display: inline-block;
+      p{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        font-size: .8em !important;
+      }
+    }
+
+    .descricao{
+      background: #FFFFFF;
+      border-radius: 3px;
+      width: 100%;
+      padding: 0.5em;
+      display: inline-block;
+      p{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        font-size: .8em !important;
+      }
+    }
+  }
+
+  .btns{
+    button{
+      width: 100% !important;
+      background: #9F36C4 !important;
+      border-radius: 6px !important;
+    }
   }
 }

@@ -5,3 +5,10 @@
 .col-10 {
   position: relative;
 }
+
+@media (max-width: 600px) {
+  .mobile-payment-form{
+    padding: 0 !important;
+  }
+
+}

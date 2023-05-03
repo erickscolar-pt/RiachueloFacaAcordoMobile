@@ -1,0 +1,29 @@
+<div class="mobile">
+  <div class="row mobile-caixa-1 mb-4">
+    <div class="col text-mobile">
+      <p class="lead-text">
+        Na <span class="roxo">Faça Acordo</span> você
+        negocia online
+        com a Midway.</p>
+        <span class="mb-3">Sem burocracia.</span>
+      <p class="lead-text">Parcele em até 12x
+        no cartão de crédito</p>
+    </div>
+    <div class="col">
+      <img [src]="topImage" class="img-fluid"/>
+    </div>
+  </div>
+  <div class="mobile-caixa-2 mb-4">
+    <app-user-form class="btn-debt" [formType]="search" *ngIf="!auth.isAuthenticated()" formTypeStr="{{'search'}}" (userSubmit)="checkCPF($event)"></app-user-form>
+    <div class="row col-12 caixa-security mx-auto m-md-0 pl-0">
+      <img src="./../../../assets/img/facaacordo_seguranca.png" class="security" width="40">
+      <p class="m-0 pt-md-1">Ambiente seguro!</p>
+    </div>
+    <div *ngIf="(auth.isAdmin() || auth.isMaster()) && auth.isAuthenticated()" class="col-12 my-2 p-0">
+      <p>Você está conectado</p>
+    </div>
+    <div *ngIf="auth.isAuthenticated() && !auth.isAdmin() && !auth.isMaster()" class="col-12 my-2 p-0 btn-debt">
+      <button class="btn btn-theme home" (click)="navigate()">Meus débitos</button>
+    </div>
+  </div>
+</div>

@@ -28,7 +28,15 @@
   padding: 3rem !important;
 }
 
-@media (max-width: 490px){
+@media (max-width: 600px){
+  .card {
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    .caixa-msg {
+      background-color: transparent;
+  }
+  }
   .cx-msg-agendamento{
       padding: 0 !important;
   }

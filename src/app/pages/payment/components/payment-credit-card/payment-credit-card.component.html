@@ -6,76 +6,80 @@
         [formGroup]="paymentCreditCardForm"
         (ngSubmit)="onSubmit()">
         <div class="row no-gutters">
-          <div class="col-12 text-left">
-            <h2 class="text-title">Cartão</h2>
+          <!-- form -->
+          <div class="form-cartao">
+            <div class="col-12 text-left text-cartao">
+              <h2 class="text-title">Cartão</h2>
+            </div>
+            <mat-form-field class="col-12 text-center numero-cartao" appearance="outline">
+              <input matInput type="text" mask="0000000000000099" placeholder="Número do cartão" class="col-12" formControlName="number">
+              <mat-error *ngIf="paymentCreditCardForm.controls['number'].hasError('required')">
+                É obrigatório preencher o número do cartão
+              </mat-error>
+            </mat-form-field>
+            <figure class="col-8 web">
+              <img src="./../../../../../assets/img/payment/icones-seguranca.png" class="img-fluid" alt="">
+            </figure>
+            <mat-form-field class="col-12 col-md-6 px-1 text-center" appearance="outline">
+              <input matInput type="text" placeholder="Primeiro nome" class="col-12" formControlName="first_name"/>
+              <mat-error *ngIf="paymentCreditCardForm.controls['first_name'].hasError('required')">
+                É obrigatório preencher o primeiro nome
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-12 col-md-6 px-1 text-center" appearance="outline">
+              <input matInput type="text" placeholder="Sobrenome" class="col-12" formControlName="last_name"/>
+              <mat-error *ngIf="paymentCreditCardForm.controls['last_name'].hasError('required')">
+                É obrigatório preencher o último nome
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-12 col-md-6 px-1 text-center" appearance="outline">
+              <input matInput type="text" mask="00/00" placeholder="Data de validade" class="col-12" formControlName="cardExpiry"/>
+              <mat-error *ngIf="paymentCreditCardForm.controls['cardExpiry'].hasError('required')">
+                É obrigatório preencher a validade do cartão
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-12 col-md-6 px-1 text-center" appearance="outline">
+              <input matInput type="text" mask="0009" placeholder="Código de segurança" class="col-12" formControlName="verification_value"/>
+              <mat-error *ngIf="paymentCreditCardForm.controls['verification_value'].hasError('required')">
+                É obrigatório preencher o código de verificação
+              </mat-error>
+            </mat-form-field>
+            <div class="row no-gutters justify-content-center">
+              <div class="col-12 text-left">
+                <h2 class="text-title">Endereço</h2>
+              </div>
+
+              <mat-form-field class="col-12 col-md-6 col-xl-4 px-1 text-center" appearance="outline">
+                <input matInput type="text" placeholder="CEP" class="col-12" mask="00000-000" formControlName="cep">
+                <mat-error *ngIf="paymentCreditCardForm.controls['cep'].hasError('required')">
+                  É obrigatório preencher o CEP
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-12 col-md-6 col-xl-8 px-1 text-center" appearance="outline">
+                <input matInput type="text" placeholder="Logradouro" class="col-12" formControlName="logradouro">
+              </mat-form-field>
+
+              <mat-form-field class="col-12 col-md-6 col-xl-4 px-1 text-center" appearance="outline">
+                <input matInput type="text" placeholder="Número" class="col-12" formControlName="numero">
+                <mat-error *ngIf="paymentCreditCardForm.controls['numero'].hasError('required')">
+                  É obrigatório preencher o número da casa
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-12 col-md-6 col-xl-8 px-1 text-center" appearance="outline">
+                <input matInput type="text" placeholder="Bairro" class="col-12" formControlName="bairro">
+              </mat-form-field>
+
+              <mat-form-field class="col-12 col-md-6 col-xl-4 px-1 text-center" appearance="outline">
+                <input matInput type="text" placeholder="Cidade" class="col-12" formControlName="cidade">
+              </mat-form-field>
+              <mat-form-field class="col-12 col-md-6 col-xl-8 px-1 text-center" appearance="outline">
+                <input matInput type="text" placeholder="UF" class="col-12" formControlName="uf">
+              </mat-form-field>
+            </div>
           </div>
-          <mat-form-field class="col-12 text-center" appearance="outline">
-            <input matInput type="text" mask="0000000000000099" placeholder="Número do cartão" class="col-12" formControlName="number">
-            <mat-error *ngIf="paymentCreditCardForm.controls['number'].hasError('required')">
-              É obrigatório preencher o número do cartão
-            </mat-error>
-          </mat-form-field>
-          <figure class="col-8">
-            <img src="./../../../../../assets/img/payment/icones-seguranca.png" class="img-fluid" alt="">
-          </figure>
-          <mat-form-field class="col-12 col-md-6 px-1 text-center" appearance="outline">
-            <input matInput type="text" placeholder="Primeiro nome" class="col-12" formControlName="first_name"/>
-            <mat-error *ngIf="paymentCreditCardForm.controls['first_name'].hasError('required')">
-              É obrigatório preencher o primeiro nome
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="col-12 col-md-6 px-1 text-center" appearance="outline">
-            <input matInput type="text" placeholder="Sobrenome" class="col-12" formControlName="last_name"/>
-            <mat-error *ngIf="paymentCreditCardForm.controls['last_name'].hasError('required')">
-              É obrigatório preencher o último nome
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="col-12 col-md-6 px-1 text-center" appearance="outline">
-            <input matInput type="text" mask="00/00" placeholder="Data de validade" class="col-12" formControlName="cardExpiry"/>
-            <mat-error *ngIf="paymentCreditCardForm.controls['cardExpiry'].hasError('required')">
-              É obrigatório preencher a validade do cartão
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="col-12 col-md-6 px-1 text-center" appearance="outline">
-            <input matInput type="text" mask="0009" placeholder="Código de segurança" class="col-12" formControlName="verification_value"/>
-            <mat-error *ngIf="paymentCreditCardForm.controls['verification_value'].hasError('required')">
-              É obrigatório preencher o código de verificação
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="row no-gutters justify-content-center">
-          <div class="col-12 text-left">
-            <h2 class="text-title">Endereço</h2>
-          </div>
-
-          <mat-form-field class="col-12 col-md-6 col-xl-4 px-1 text-center" appearance="outline">
-            <input matInput type="text" placeholder="CEP" class="col-12" mask="00000-000" formControlName="cep">
-            <mat-error *ngIf="paymentCreditCardForm.controls['cep'].hasError('required')">
-              É obrigatório preencher o CEP
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="col-12 col-md-6 col-xl-8 px-1 text-center" appearance="outline">
-            <input matInput type="text" placeholder="Logradouro" class="col-12" formControlName="logradouro">
-          </mat-form-field>
-
-          <mat-form-field class="col-12 col-md-6 col-xl-4 px-1 text-center" appearance="outline">
-            <input matInput type="text" placeholder="Número" class="col-12" formControlName="numero">
-            <mat-error *ngIf="paymentCreditCardForm.controls['numero'].hasError('required')">
-              É obrigatório preencher o número da casa
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="col-12 col-md-6 col-xl-8 px-1 text-center" appearance="outline">
-            <input matInput type="text" placeholder="Bairro" class="col-12" formControlName="bairro">
-          </mat-form-field>
-
-          <mat-form-field class="col-12 col-md-6 col-xl-4 px-1 text-center" appearance="outline">
-            <input matInput type="text" placeholder="Cidade" class="col-12" formControlName="cidade">
-          </mat-form-field>
-          <mat-form-field class="col-12 col-md-6 col-xl-8 px-1 text-center" appearance="outline">
-            <input matInput type="text" placeholder="UF" class="col-12" formControlName="uf">
-          </mat-form-field>
+          <!-- form -->
           <!-- termos -->
-          <div class="row no-gutters justify-content-left mt-2 mb-2">
+          <div class="row mobile-termos no-gutters justify-content-left mt-2 mb-2">
             <div class="col-12 col-md-12">
               <div class="row no-gutters">
                 <mat-checkbox (change)="changeTerms($event)" class="col-1"></mat-checkbox>
@@ -85,8 +89,12 @@
             </div>
           </div>
           <!-- fim termos -->
-          <div class="col-12 col-md-12 px-1 text-left">
-            <button type="submit" class="btn btn-theme" [disabled]="habiliteButton == false">Confirmar Acordo</button>
+          <div class="col-12 col-md-12 px-1 text-left caixa-btn">
+            <button type="button" class="btn btn-theme mobile" (click)="voltar()">Voltar</button>
+            <button type="submit" class="btn btn-theme" [disabled]="habiliteButton == false">
+              <span class="web">Confirmar Acordo</span>
+              <span class="mobile">Continuar</span>
+            </button>
           </div>
         </div>
       </form>

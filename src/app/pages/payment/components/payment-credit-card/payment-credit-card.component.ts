@@ -44,6 +44,7 @@ export class PaymentCreditCardComponent implements OnInit, OnChanges {
 
   @Input() public debt: CompanyDebt;
   @Output() errorCC = new EventEmitter();
+  @Output() hideCreditOpenOption = new EventEmitter();
 
   constructor(
     private fb: FormBuilder,
@@ -124,6 +125,10 @@ export class PaymentCreditCardComponent implements OnInit, OnChanges {
     })
   }
 
+  public voltar(){
+    this.hideCreditOpenOption.emit(false)
+  }
+
   onSubmit() {
     this.submitted = true;
     this.gaAnalytics.eventEmitter('payment', 'cartao-de-credito', 'clickPayCC', this.debt.idCon);
@@ -135,10 +140,17 @@ export class PaymentCreditCardComponent implements OnInit, OnChanges {
       this.deal.numero = this.paymentCreditCardForm.get('numero').value;
       this.paymentService.getAccountId()
         .subscribe(data => {
+          console.log('key..::'+data.iuguKey)
+
           const creditCard = this.getIuguToken(data.iuguKey, this.paymentCreditCardForm.value);
           Iugu.createPaymentToken(creditCard, response => {
+              console.log('res..::'+JSON.stringify(response))
+
             this.deal.clientKey = !response.errors ? response.id : null;
+
             if (this.deal.clientKey) {
+              console.log('key..::'+this.deal)
+
               this.paymentService.postGenerateDeal(this.deal)
                 .subscribe({
                   next: (deal) => {
@@ -154,6 +166,7 @@ export class PaymentCreditCardComponent implements OnInit, OnChanges {
                   },
                   complete: () => {
                     this.loading.stopLoad();
+
                     if (this.iuguCCTransaction.success) {
                       this.router.navigate(['/debt/success'], { queryParams: { paymentMethod: this.paymentMethod.CREDITCARD, concts: this.debt.qtdContratos } });
                     } else {
@@ -168,6 +181,8 @@ export class PaymentCreditCardComponent implements OnInit, OnChanges {
                   }
                 });
             } else {
+              console.log('iugu..::'+this.iuguCCTransaction)
+
               this.loading.stopLoad();
               this.habiliteButton = true;
               this.errorCC.emit("Error in credit card payment");

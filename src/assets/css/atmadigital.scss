@@ -69,6 +69,20 @@ fa-icon {
 }
 
 @media(max-width: 600px) {
+  .btn-theme {
+    color: #fff;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    transition: all 0.4s;
+
+    background: #9F36C4 !important;
+    border-radius: 6px !important;
+  }
+  .btn-theme:hover{
+    background-color: white !important;
+    color:#9F36C4 !important;
+    border: 1px solid #9F36C4 !important;
+  }
 /*   html, body {
     height: 100%;
     margin: 0;
@@ -100,13 +114,18 @@ fa-icon {
     align-items: center;
 }
   .riachuelo{
-    background: none !important;
-    border: 0px !important;
+    background: transparent !important;
+    border: none !important;
     border-radius: 6px !important;
-    height: 35px;
+    height: auto;
   }
   body{
     background: linear-gradient(150.75deg, #BA6DD6 37.7%, #316BFF 97.26%);
+    //background-position: center;
+    //background-repeat: no-repeat;
+    //background-size: cover;
+    //height: 100%;
+    background-attachment: fixed;
   }
   p {
     font-size: 1.2em !important;
@@ -196,12 +215,19 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 
 .imagem{
   overflow: hidden;
+  display: flex !important;
+  
 }
 .imagem img{
-  max-width: 100%;
+  max-width: 40%;
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
    transition: all 0.3s;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   align-content: center;
+   justify-content: center;
+   align-items: center;
 }
 .imagem:hover img{
   -moz-transform: scale(1.1);
@@ -242,11 +268,6 @@ input::-webkit-input-placeholder { /* WebKit browsers */
   z-index: 2;
 }
 
-.riachuelo{
-  background-color: rgba(255, 255, 255, 1);
- // box-shadow: 10px 5px 5px gray;
-  border: 1px solid gray !important;
-}
 /* .mat-form-field-outline {
   color: #7511a9 !important;
 } */

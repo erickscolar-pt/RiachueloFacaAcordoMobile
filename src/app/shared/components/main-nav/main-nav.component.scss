@@ -59,67 +59,88 @@ mat-toolbar a:hover{
 }
 
 @media screen and (max-width: 660px) {
+
+
   /* menu */
-/deep/.cdk-global-overlay-wrapper, .cdk-overlay-container {
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
+  //deep/ .mat-toolbar-mobile {
+    /deep/.cdk-overlay-connected-position-bounding-box {
+      top: 60px !important;
+      right: 0 !important;
+      height: 100% !important;
+      width: 100% !important;
+      align-items: none !important;
+      justify-content: none !important;
+      position: absolute !important;
+      z-index: 1000 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      min-width: 1px !important;
+      min-height: 1px !important;
+      align-items: stretch !important;
+      flex-wrap: wrap !important;
+      background: white !important;
 
-/deep/.cdk-overlay-connected-position-bounding-box {
-  top: 60px !important;
-  right: 0 !important;
-  height: 100% !important;
-  width: 100% !important;
-  align-items: none !important;
-  justify-content: none !important;
-  position: absolute !important;
-  z-index: 1000 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  min-width: 1px !important;
-  min-height: 1px !important;
-  align-items: stretch !important;
-  flex-wrap: wrap !important;
-  background: white !important;
+      /deep/.cdk-overlay-pane {
+        position: absolute !important;
+        pointer-events: auto !important;
+        box-sizing: border-box !important;
+        z-index: 1000 !important;
+        display: flex !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        width: 100%;
+        /* background: white; */
+      }
+      /deep/.mat-menu-panel {
+        min-width: 112px !important;
+        max-width: 100% !important;
+        overflow: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        max-height: 100% !important;
+        border-radius: 0 !important;
+        outline: 0 !important;
+        height: 100% !important;
+        width: 100% !important;
+      }
+      /deep/.mat-menu-panel {
+        background: #fff !important;
+        height: 42em !important;
+          .mat-menu-content:not(:empty) {
+            width: 100% !important;
+            height: 100% !important;
+            padding-top: 8px !important;
+            padding-bottom: 8px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+      }
+      /deep/.mat-elevation-z4 {
+        box-shadow: none !important;
+      }
+    }
+    a{
+      cursor:pointer;
+      text-decoration: none;
+      color: #919191 !important;
+    }
+    /deep/ .mat-menu-item {
+      border-bottom: 1px #000 solid !important;
+      width: 90%;
+      font-size: 1.8em;
+    }
+    /deep/.cdk-global-overlay-wrapper, .cdk-overlay-container {
+      pointer-events: none;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
 
-  /deep/.cdk-overlay-pane {
-    position: absolute !important;
-    pointer-events: auto !important;
-    box-sizing: border-box !important;
-    z-index: 1000 !important;
-    display: flex !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    /* background: white; */
-}
-/deep/.mat-menu-panel {
-  min-width: 112px !important;
-  max-width: 100% !important;
-  overflow: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  max-height: 100% !important;
-  border-radius: 0 !important;
-  outline: 0 !important;
-  height: 100% !important;
-  width: 100% !important;
-}
-/deep/.mat-menu-panel {
-  background: #fff !important;
-  height: 42em !important;
-  .mat-menu-content:not(:empty) {
-    width: 100% !important;
-    height: 100% !important;
-    padding-top: 8px !important;
-    padding-bottom: 8px !important;
-}
-}
-/deep/.mat-elevation-z4 {
-  box-shadow: none !important;
-}
-}
+  //}
+
+
+
 /* fim menu */
   .white-icon {
     color: white;

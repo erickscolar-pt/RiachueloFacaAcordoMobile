@@ -32,7 +32,7 @@ export class ProfileLocalStorageComponent implements  OnChanges, AfterViewChecke
     public debtForm : FormGroup;
     public numeroContrato;
     public bandeira: string;
-    public atrasoMenor350 : boolean;
+    public atrasoMenor360 : boolean;
     public dividaVencida : Debt;
     public request: TradingRequest = {};
     public option: string = '';
@@ -70,8 +70,8 @@ export class ProfileLocalStorageComponent implements  OnChanges, AfterViewChecke
         this.valorSemDesconto = this.calcularValorSemDesconto(this.debt.dividas)
         this.percentualDeDesconto = this.calcularPercentualDesconto(this.valorComDesconto, this.valorSemDesconto)
       }
-       this.atrasoMenor350 = (this.diasEmAtraso < 350 && this.checaSaldoAVencer()) ? true : false;
-       if(this.atrasoMenor350){
+       this.atrasoMenor360 = (this.diasEmAtraso < 350 && this.checaSaldoAVencer()) ? true : false;
+       if(this.atrasoMenor360){
          this.defineDividaVencida();
        }
     }

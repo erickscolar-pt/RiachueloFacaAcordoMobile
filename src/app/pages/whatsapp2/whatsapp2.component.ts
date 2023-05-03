@@ -13,6 +13,6 @@ export class Whatsapp2Component implements OnInit {
   }
 
   chamar(){
-    window.open("https://api.whatsapp.com/send?phone=5511964392624&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato")
+    window.open("https://api.whatsapp.com/send?phone=5511963610672&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato")
   }
 }

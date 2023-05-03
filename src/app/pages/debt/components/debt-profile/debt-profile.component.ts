@@ -21,6 +21,10 @@ export class DebtProfileComponent implements OnChanges, AfterViewChecked {
   @Output() getPayment = new EventEmitter();
   @Output() validTrueCard = new EventEmitter();
   @Output() vencidaOrVencer = new EventEmitter();
+  @Output() backMobile = new EventEmitter();
+
+
+  //labelPosition: 'All' = 'All';
 
   public offerIcon = faTags;
 
@@ -33,7 +37,7 @@ export class DebtProfileComponent implements OnChanges, AfterViewChecked {
   public debtForm : FormGroup;
   public numeroContrato;
   public bandeira: string;
-  public atrasoMenor350 : boolean;
+  public atrasoMenor360 : boolean;
   public dividaVencida : Debt;
   public request: TradingRequest = {};
   public option: string = '';
@@ -60,6 +64,7 @@ export class DebtProfileComponent implements OnChanges, AfterViewChecked {
 
   ngOnInit(){
     this.loading.acessoClient("Resumo da divida",localStorage.getItem('cpf')).subscribe();
+    this.backMobile.emit(true)
 
     if(this.checaSaldoAVencer()){
       // envia para debt pai se ele é true ou false
@@ -79,6 +84,7 @@ export class DebtProfileComponent implements OnChanges, AfterViewChecked {
 
 
   ngOnChanges() {
+    //console.log("Dividas...:"+JSON.stringify(this.debt))
     if(this.debt.dividas){
       this.numeroContrato = this.debt.contrato
       this.diasEmAtraso = this.debt.informacoes.filter(info => { return info.descricao == 'Dias Enquadramento'})['0'].valor
@@ -88,13 +94,12 @@ export class DebtProfileComponent implements OnChanges, AfterViewChecked {
       this.percentualDeDesconto = this.calcularPercentualDesconto(this.valorComDesconto, this.valorSemDesconto)
       this.vencido = this.debt.dividas[0].descricao == 'Saldo A Vencer' ? '' : this.debt.dividas[0].valorAtualizado;
       this.total = this.debt.dividas[0].descricao != 'Saldo A Vencer' ? this.debt.dividas[0].valorAtualizado + this.debt.dividas[1].valorAtualizado : '';
-      console.log('Saldo vencido: ' + this.vencido)
-      console.log('Saldo a vencer: ' + this.total)
     }
-     this.atrasoMenor350 = (this.diasEmAtraso < 350 && this.checaSaldoAVencer()) ? true : false;
-     if(this.atrasoMenor350){
+     this.atrasoMenor360 = (this.diasEmAtraso < 360 && this.checaSaldoAVencer()) ? true : false;
+     if(this.atrasoMenor360){
        this.defineDividaVencida();
      }
+
   }
 
   calcularValorComDesconto(opc : TradingDetails[]){
@@ -134,9 +139,14 @@ export class DebtProfileComponent implements OnChanges, AfterViewChecked {
     return false;
   }
 
+  goToInstallmentsMobile(val){
+    this.backMobile.emit(false)
+    this.goToInstallments(val)
+  }
+
   goToInstallments(val) {
+    console.log(JSON.stringify(this.debt))
     this.gaAnalytics.eventEmitter('deal', 'fazerAcordo', 'clickMakeDeal', this.diasEmAtraso);
-    //this.optionLocalStorage = localStorage.setItem('Objeto1', JSON.stringify(this.debt.tradingOptions))
     localStorage.setItem('percentualDesconto', String(this.percentualDeDesconto))
 
     var session;
@@ -144,6 +154,8 @@ export class DebtProfileComponent implements OnChanges, AfterViewChecked {
     if (val == 'All' && this.SaldoTotal === null && this.isVencidaOrVencer == true){
       sessionStorage.setItem('SaldoTotal', JSON.stringify(this.debt))
       sessionStorage.setItem('SaldoTotalEnv', "SaldoTotalEnviado")
+      sessionStorage.setItem('typeSaldo', "SaldoTotal")
+
 
       session = this.debt
 
@@ -151,22 +163,39 @@ export class DebtProfileComponent implements OnChanges, AfterViewChecked {
 
       sessionStorage.setItem('SaldoVencido', JSON.stringify(this.debt))
       sessionStorage.setItem('SaldoVencidoEnv', "SaldoVencidoEnviado")
+      sessionStorage.setItem('typeSaldo', "SaldoVencido")
+
 
       session = this.debt
 
     } else if(val == 'All' && this.SaldoTotal !== null && this.isVencidaOrVencer == true){
 
       session = JSON.parse(sessionStorage.getItem('SaldoTotal'))
-
+      sessionStorage.setItem('SaldoTotalEnv', "SaldoTotalEnviado")
+      sessionStorage.setItem('typeSaldo', "SaldoTotal")
+      
     } else if(val !== 'All' && this.SaldoVencido !== null && this.isVencidaOrVencer == true){
 
       session = JSON.parse(sessionStorage.getItem('SaldoVencido'))
+      sessionStorage.setItem('SaldoTotalEnv', "SaldoTotalEnviado")
+      sessionStorage.setItem('typeSaldo', "SaldoVencido")
 
+    }else if(this.isVencidaOrVencer == false && val == 'All'){
+      sessionStorage.setItem('SaldoTotal', JSON.stringify(this.debt))
+      sessionStorage.setItem('SaldoTotalEnv', "SaldoTotalEnviado")
+      sessionStorage.setItem('typeSaldo', "SaldoTotal")
+
+      session = this.debt
     } else if(this.isVencidaOrVencer == false && val == 'All'){
+      session = JSON.parse(sessionStorage.getItem('SaldoTotal'))
+      sessionStorage.setItem('SaldoTotalEnv', "SaldoTotalEnviado")
+      sessionStorage.setItem('typeSaldo', "SaldoTotal")
+    }
+    /*  else if(this.isVencidaOrVencer == false && val == 'All'){
 
       session = this.debt
 
-    }
+    } */
 
     this.validTrueCard.emit(false)
     this.getPayment.emit(session);
@@ -174,19 +203,29 @@ export class DebtProfileComponent implements OnChanges, AfterViewChecked {
 
   }
 
+  selectOptionVencidoAndAVencerMobile(val){
+    //console.log(val)
+    this.backMobile.emit(false)
+    sessionStorage.setItem('tipoNegociacao',val)
+    this.selectOptionVencidoAndAVencer(val)
+  }
+
   selectOptionVencidoAndAVencer(i){
 
+    //console.log(i)
     this.SaldoVencido = sessionStorage.getItem('SaldoVencidoEnv');
     this.SaldoTotal  = sessionStorage.getItem('SaldoTotalEnv');
 
     if( i == 'All' && this.SaldoTotal === "SaldoTotalEnviado"){
 
       this.valueDebt = false
+      //this.backMobile.emit(false)
       this.goToInstallments(i);
 
     } else if( i != 'All' && this.SaldoVencido === "SaldoVencidoEnviado" ){
 
       this.valueDebt = false
+      //this.backMobile.emit(false)
       this.goToInstallments(i);
 
     } else {
@@ -210,6 +249,7 @@ export class DebtProfileComponent implements OnChanges, AfterViewChecked {
     .subscribe({
       next: debtValues => {
         this.loading.stopLoad();
+        this.backMobile.emit(false)
         if (debtValues && !debtValues.isError) {
           this.debt.tradingOptions = debtValues as TradingDetails[];
           if(this.option == ''){

@@ -1,12 +1,12 @@
 <div class="container-fluid no-gutters py-5 degrade h-100" *ngIf="debts != null && !company">
   <div class="container py-5 h-100">
           <div class="row no-gutters align-items-center">
-              <div class="col-12 col-md-11 mx-auto card border-0 p-4 mb-3 p-md-5 paguecomprando card-full">
+              <div class="col-12 col-md-11 mx-auto card border-0 p-4 mb-3 p-md-5 card-full">
                   <p class="text-center titulo-card">Localizamos os seguintes contratos: </p>
                   <div class="row justify-content-center py-2">
-                      <div class="col-12 col-md-4 text-center p-2 color-teste" *ngFor="let contrato of debts">
+                      <div class="col-12 col-md-4 text-center p-2 color-card" *ngFor="let contrato of debts">
                           <div class="col-12 row justify-content-center">
-                              <div class="col-16 text-center py-4 mt-0 ml-4">
+                              <div class="col-16 web text-center py-4 mt-0 ml-4">
                               </div>
                               <figure *ngIf="contrato.bandeira.includes('Net')" class="col-7 my-1 img-fundo mt-3 mb-2">
                                 <img [src]="NetImage" width="130" class="my-1 p-2 mx-auto" alt="">
@@ -15,19 +15,19 @@
                                   <img [src]="contrato.company.urlImage" width="130" class="my-1 p-2 mx-auto" alt="">
                               </figure>
                           </div>
-                          <div class="row mb-2">
+                          <div class="row mb-2 contrato">
                               <div class="col-12">
                                   <p><span style="color: rgb(0, 0, 0) !important">Contrato:</span> {{ contrato.contrato
                                       }}</p>
                               </div>
                           </div>
-                          <div class="row mb-2">
+                          <div class="row mb-2 descricao">
                               <div class="col-12" *ngFor="let info of contrato.informacoes">
                                   <p *ngIf="info.descricao == 'Bandeira'"><span
                                           style="color: rgb(0, 0, 0) !important">Descrição:</span> {{ info.valor }}</p>
                               </div>
                           </div>
-                          <div class="row mb-2 mt-2">
+                          <div class="row mb-2 mt-2 btns">
                               <div class="col-12 py-3">
                                   <button class="btn btn-theme" *ngIf="contrato.acordo.length > 0"
                                       (click)="chooseCompany(contrato)">Gerar 2º via boleto</button>
@@ -38,9 +38,7 @@
                       </div>
                   </div>
               </div>
-
           </div>
-
       </div>
 </div>
 <div class="loading-debt" *ngIf="load">

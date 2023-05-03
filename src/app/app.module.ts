@@ -58,6 +58,8 @@ import { PrivacyPolicyComponent } from './shared/components/privacy-policy/priva
 import { PrivacyPolicyModule } from './shared/components/privacy-policy/PrivacyPolicy.module';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { CodeInputModule } from 'angular-code-input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { Home3Component } from './pages/home3/home3.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -84,9 +86,11 @@ registerLocaleData(localePt, 'pt');
     Home2Component,
     SegundaViaComponent,
     PicpayComponent2,
-    PaguecomprandoComponent
+    PaguecomprandoComponent,
+    Home3Component
   ],
   imports: [
+    MatCheckboxModule,
     BrowserModule,
     CodeInputModule.forRoot({
       codeLength: 6,

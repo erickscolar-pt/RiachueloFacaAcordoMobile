@@ -1,3 +1,11 @@
+form{
+  .mobile{
+    display: none !important;
+  }
+  .web{
+    display: inline-block !important;
+  }
+}
 .card{
     border-radius: 15px;
 }
@@ -31,26 +39,101 @@ p{
   padding: 0.2em 0 0.5em 0;
 }
 
-.btn{
-  border-radius: 25px !important;
-  padding-top: 5px !important;
-  padding-bottom: 5px !important;
-  font-family: 'arial' !important;
-  display: flex;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer !important;
-}
+.caixa-btn{
+  .mobile{
+    display: none !important;
+  }
+  .btn{
+    border-radius: 25px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    font-family: 'arial' !important;
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer !important;
+    .web{
+      display: inline-block;
+    }
+    .mobile{
+      display: none;
+    }
+  }
 
-.btn:hover{
-  background-color: #fff ;
-  color: #7511a9 !important;
-  border: 1px solid #7511a9 !important;
+  .btn:hover{
+    background-color: #fff ;
+    color: #7511a9 !important;
+    border: 1px solid #7511a9 !important;
+  }
 }
 
 /deep/.mat-input-element {
   vertical-align: super ip !important;
   text-align: left !important;
+}
+
+@media (max-width: 600px) {
+  form{
+
+    .text-cartao {
+      padding: 0 !important;
+    }
+    .text-title{
+      color: #fff !important;
+      font-size: 2em;
+      font-family: arial !important;
+    }
+    .mobile{
+      display: inline-block !important;
+    }
+    .web{
+      display: none !important;
+    }
+    .form-cartao{
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      padding: 1em;
+      .numero-cartao {
+        padding: 0 4px !important;
+      }
+    }
+    .mobile-termos{
+      width: 100% !important;
+    }
+  }
+  .caixa-btn{
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
+    .mobile{
+      display: inline-block !important;
+    }
+    .btn {
+      padding-top: 15px !important;
+      padding-bottom: 15px !important;
+      background: #9F36C4 !important;
+      border-radius: 6px !important;
+      max-width: 20em;
+      margin-right: 0 !important;
+      margin-top: 1em;
+      font-size: 1.5em;
+      .web{
+        display: none;
+      }
+      .mobile{
+        display: inline-block;
+      }
+    }
+    .btn:hover{
+      background-color: #fff ;
+      color: #9F36C4 !important;
+      border: 1px solid #9F36C4 !important;
+    }
+  }
+
 }

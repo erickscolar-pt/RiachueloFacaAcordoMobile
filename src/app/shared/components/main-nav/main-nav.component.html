@@ -1,4 +1,4 @@
-<mat-toolbar fxLayout="row" class="fixed-top">
+<mat-toolbar fxLayout="row" class="fixed-top mat-toolbar-mobile">
   <span fxFlex>
     <a routerLink="/home" routerLinkActive="active">
       <div class="col-10">
@@ -16,18 +16,21 @@
   <a mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
     <mat-icon class="white-icon">menu</mat-icon>
   </a>
-  <mat-menu #dropMenu="matMenu">
-    <ng-container>
-        <a mat-menu-item *ngIf="!auth.isAuthenticated()" (click)="opt('login')"><mat-icon>login</mat-icon>Consultar CPF</a>
-        <a mat-menu-item *ngIf="auth.isAuthenticated() && !auth.isAdmin() && !auth.isMaster()" (click)="opt('debt')"><mat-icon>attach_money</mat-icon>Meus débitos</a>
-        <a mat-menu-item (click)="navigate('whatsapp')" class="lateral"><mat-icon>phone_android</mat-icon>Negociar no WhatsApp</a>
-        <a mat-menu-item *ngIf="!auth.isAuthenticated()" (click)="opt('login')" class="lateral"><mat-icon>payments</mat-icon>2ª via de boleto</a>
-        <a mat-menu-item (click)="navigate('sobre')" class="lateral"><mat-icon>people_outline</mat-icon>Quem somos</a>
-        <a mat-menu-item *ngIf="auth.isAuthenticated() && !auth.isAdmin() && !auth.isMaster()" (click)="opt('faq')"><mat-icon>help_outline</mat-icon>Me ajuda</a>
+  <mat-menu class="mat-menu-mobile" #dropMenu="matMenu">
+    <ng-container class="ng-menu-mobile">
+        <a mat-menu-item *ngIf="!auth.isAuthenticated()" (click)="opt('login')">Consultar CPF</a>
+        <a mat-menu-item class="web" *ngIf="auth.isAuthenticated() && !auth.isAdmin() && !auth.isMaster()" (click)="opt('debt')">Meus débitos</a>
+        <a mat-menu-item class="mobile" *ngIf="auth.isAuthenticated() && !auth.isAdmin() && !auth.isMaster()" (click)="opt('debt')">Minhas dívidas</a>
+        <a mat-menu-item *ngIf="!auth.isAuthenticated()" (click)="opt('login')" class="lateral">2ª via de boleto</a>
+        <a mat-menu-item (click)="navigate('whatsapp')" class="lateral">Negociar via WhatsApp</a>
+        <a mat-menu-item (click)="navigate('sobre')" class="lateral">Quem somos</a>
+        <a mat-menu-item *ngIf="auth.isAuthenticated() && !auth.isAdmin() && !auth.isMaster()" (click)="opt('faq')" class="web">Me ajuda</a>
+        <a mat-menu-item *ngIf="auth.isAuthenticated() && !auth.isAdmin() && !auth.isMaster()" (click)="opt('faq')" class="mobile">Central de ajuda</a>
+        <a mat-menu-item *ngIf="auth.isAuthenticated() && !auth.isAdmin() && !auth.isMaster()" (click)="opt('faq')" class="mobile">Entrar em contato</a>
 
-        <a mat-menu-item *ngIf="(auth.isAdmin() || auth.isMaster()) && auth.isAuthenticated()" routerLink="/dashboard" routerLinkActive="active"><mat-icon>trending_up</mat-icon>Relatório</a>
-        <a mat-menu-item *ngIf="auth.isMaster() && auth.isAuthenticated()" routerLink="/admin" routerLinkActive="active"><mat-icon>supervisor_account</mat-icon>Usuários</a>
-        <a mat-menu-item *ngIf="auth.isAuthenticated()" (click)="opt('sair')"><mat-icon>logout</mat-icon>Sair</a>
+        <a mat-menu-item *ngIf="(auth.isAdmin() || auth.isMaster()) && auth.isAuthenticated()" routerLink="/dashboard" routerLinkActive="active">Relatório</a>
+        <a mat-menu-item *ngIf="auth.isMaster() && auth.isAuthenticated()" routerLink="/admin" routerLinkActive="active">Usuários</a>
+        <a mat-menu-item *ngIf="auth.isAuthenticated()" (click)="opt('sair')">Sair</a>
 
     </ng-container>
   </mat-menu>

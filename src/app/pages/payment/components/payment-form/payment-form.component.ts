@@ -22,14 +22,21 @@ export class PaymentFormComponent implements OnInit {
   public card:boolean = false;
   public teste: any = localStorage.getItem('optionPayBack');
   public opcaoBoleto: boolean = false;
+  public parcela?: number;
+  public demaisParcela: number;
+  public valorEntrada: string;
+  public valorDemais?: any;
+  public dataVencimento: string;
   @Input() debt : CompanyDebt;
   @Input() hasErrorCC : boolean;
   @Input() optionPayBack: boolean;
+  @Input() selectDebt: any;
   @Output() setPaymentOption = new EventEmitter();
   @Output() getPayment = new EventEmitter();
   @Output() filhinho = new EventEmitter();
   @Output() filhinho2 = new EventEmitter();
   @Output() voltarMetodoPagamento = new EventEmitter();
+  @Output() hideOpcPagamento = new EventEmitter();
 
   selectedCard: any;
   constructor(
@@ -52,7 +59,20 @@ export class PaymentFormComponent implements OnInit {
     }
 
     ngOnChanges(){
-    //this.calculaValorCartao(this.debt.plotSelected)
+      console.log('select numero => ' + this.selectDebt.numero)
+      console.log('select entrada => ' + this.selectDebt.valorEntrada)
+      console.log('select demais => ' + this.selectDebt.valorDemaisParcelas)
+      console.log('select datavencimento => ' + this.selectDebt.dataVencimento)
+      console.log('select debt => ' + JSON.stringify(this.selectDebt))
+
+      //var i = JSON.parse(localStorage.getItem('parcelasNum'));
+
+      this.parcela = this.selectDebt.numero;
+      this.demaisParcela = this.parcela - 1;
+      this.valorDemais = this.selectDebt.valorDemaisParcelas;
+      this.valorEntrada = this.selectDebt.valorEntrada;
+      this.dataVencimento = this.selectDebt.dataVencimento;
+
     if(this.hasErrorCC == true){
       this.isSubmitted = false; // para habilitar a seleçao de pagamento novamente, caso o cartão de erro e ele chame esse componente de novo
     }
@@ -74,6 +94,11 @@ export class PaymentFormComponent implements OnInit {
     //console.log('voltou para parcelamento')
     //envia evento para componente pai payment
     this.voltarMetodoPagamento.emit(i);
+  }
+
+  selectTicketMobile(i){
+      this.hideOpcPagamento.emit(i);
+      this.onSubmit();
   }
 
   selectTicket(i){
@@ -106,6 +131,7 @@ export class PaymentFormComponent implements OnInit {
     this.selectedCard = this.paymentForm.value.paymentOption
     this.selectCard(this.selectedCard)
     this.optionPayBack == true;
+    console.log(this.selectedCard)
     if (this.paymentForm.valid) {
       if(this.paymentForm.value.paymentOption == 'CREDIT_CARD'){
         this.imgCartao = true;

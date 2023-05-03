@@ -31,7 +31,7 @@ export class PaymentTicketComponent implements OnInit, OnChanges {
     public parelaNum: Number;
     public dataVencimento: any;
     public parcOrAvista: string;
-
+    public loadAfter: boolean = true;
     public deal: SaveDealDTO = {
         paymentOption: this.paymentMethod.TICKET
     };
@@ -56,6 +56,8 @@ export class PaymentTicketComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
+
+        this.loadAfter = true;
         let details: SaveDealDetail[] = []
 
         this.loading.acessoClient("Resumo do acordo",localStorage.getItem('cpf')).subscribe();
@@ -73,9 +75,10 @@ export class PaymentTicketComponent implements OnInit, OnChanges {
         } else {
             this.parcOrAvista = "À vista"
         }
-
+        this.loadAfter = true;
+        
         this.debt.typeNegociation == 'Parcial' ?
-            this.debt.dividas.filter(divida => {
+        this.debt.dividas.filter(divida => {
                 if (divida.idTra.toString() == this.debt.idTraParcial) {
                     let detail: SaveDealDetail = {}
                     detail.divida = divida.descricao
@@ -87,20 +90,19 @@ export class PaymentTicketComponent implements OnInit, OnChanges {
                 detail.divida = divida.descricao
                 detail.contrato = divida.idTra.toString()
                 details.push(detail)
-
+                
             })
-
-        this.deal.idCon = this.debt.idCon;
-        this.deal.url = "facaacordo";
-        this.deal.cpf = localStorage.getItem('cpf')
-        this.deal.typeNegociation = this.debt.typeNegociation
-        this.deal.idTraParcial = this.debt.idTraParcial
-        this.deal.parcela = this.debt.plotSelected
-        this.deal.listDetails = details;
-        this.deal.listInformacoes = this.debt.informacoes
-        this.deal.opcaoNegociacaoNectar = this.debt.tradingOptionSelected;
-
-        this.paymentService.postGenerateDeal(this.deal)
+            
+            this.deal.idCon = this.debt.idCon;
+            this.deal.url = "facaacordo";
+            this.deal.cpf = localStorage.getItem('cpf')
+            this.deal.typeNegociation = this.debt.typeNegociation
+            this.deal.idTraParcial = this.debt.idTraParcial
+            this.deal.parcela = this.debt.plotSelected
+            this.deal.listDetails = details;
+            this.deal.listInformacoes = this.debt.informacoes
+            this.deal.opcaoNegociacaoNectar = this.debt.tradingOptionSelected;
+            this.paymentService.postGenerateDeal(this.deal)
             .subscribe({
                 next: boleto => {
                     this.ticket = boleto;
@@ -109,13 +111,17 @@ export class PaymentTicketComponent implements OnInit, OnChanges {
                     this.ticket.linkBoleto = this.sanitizer.bypassSecurityTrustUrl(linkSource);
                 },
                 error: err => {
-                  this.loading.getErrorCounter(err.error.message + " Path => " + err.error.path + " " + err.error.status).subscribe();
-                  this.handleError(err);
+                    this.router.navigate(['/debt']);
+                    this.loading.getErrorCounter(err.error.message + " Path => " + err.error.path + " " + err.error.status).subscribe();
+                    this.handleError(err);
+                    this.loadAfter = false;
                 }
             });
-    }
+            this.loadAfter = false;
+        }
+        
+        sendTicket() {
 
-    sendTicket() {
         this.loading.setLoad();
         let url = 'facaacordo';
         this.debtService.postSendMail(this.debt.idCon, null, this.deal.idCompany, url)
@@ -183,7 +189,7 @@ export class PaymentTicketComponent implements OnInit, OnChanges {
       }
 
       document.body.removeChild(linhaDigitavel);
-      
+
     }
 
     public success() {

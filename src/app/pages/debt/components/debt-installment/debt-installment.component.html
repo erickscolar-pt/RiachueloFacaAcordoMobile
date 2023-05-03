@@ -1,55 +1,87 @@
-<form *ngIf="!telaAgendamento" [formGroup]="paymentMethodForm" novalidate (ngSubmit)="onSubmit()">
-  <div class="row no-gutters my-3">
-    <p class="titulo">Escolha a melhor maneira de negociação</p>
-    <div class="esquerda col mt-4">
-      <!-- Parcelamento -->
-      <mat-radio-group *ngIf="tradingOptions" class="row no-gutters parcela" formControlName="installments">
-        <mat-radio-button class="d-flex justify-content-start" *ngFor="let plot of tradingOptions"
-        [value]="plot">
-        <span *ngIf="plot.numero == 1">
-          À vista
+<form class="riachuelo" *ngIf="!telaAgendamento" [formGroup]="paymentMethodForm" novalidate (ngSubmit)="onSubmit()">
+  <div class="my-3 mobile-flex-div">
+    <p class="titulo web">Escolha a melhor maneira de negociação</p>
+    <p class="titulo mobile">Qual a melhor condição de pagamento para você?</p>
+      <div class="mobile-flex">
+        <div class="mobile mobile-valor">
+          <p>Valor atualizado: <span class="valor">{{ valAtualizado | currency : 'BRL'  }}</span><br/>
+             Com a gente você paga:</p>
+        </div>
+        <div class="esquerda">
+          <!-- Parcelamento -->
+          <mat-radio-group *ngIf="tradingOptions" class="row no-gutters parcela" formControlName="installments">
+            <mat-radio-button class="d-flex justify-content-start" *ngFor="let plot of tradingOptions.slice(0,radius)"
+            [value]="plot">
+            <!-- 11 travado, devera ser uma variavel para aumentar a quantidade de parcelas -->
+              <span class="web" *ngIf="plot.numero == 1" >
+                À vista
+              </span>
+              <span class="web" *ngIf="plot.numero > 1" >
+                {{ plot.numero }} Parcelas
+              </span>
+              <span class="mobile" *ngIf="plot.numero == 1">
+                1x {{ plot.valorEntrada | currency : 'BRL' }}
+              </span>
+              <span class="mobile" *ngIf="(plot.numero) != 1">
+                1x {{ plot.valorEntrada | currency : 'BRL' }} + {{ plot.numero - 1 }}x {{ plot.valorDemaisParcelas | currency : 'BRL' }}
+              </span>
+          </mat-radio-button>
+        </mat-radio-group>
+          <!-- Fim parcelamento -->
+          <!-- Input insere qtd parcela -->
+          <p *ngIf="quantidaDeParcelas > 11">Precisa de mais opções ?</p>
+          <mat-form-field *ngIf="quantidaDeParcelas > 11" class="" appearance="fill">
+            <input matInput [(ngModel)]="radius" type="number" min="11" max="{{quantidaDeParcelas}}" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <!-- Fim Input insere qtd parcela -->
+      </div>
+      <div class="direita">
+        <!-- msg valor -->
+        <p class="text-center" *ngIf="debtValue">
+        <span class="msg-valores" *ngIf="(parcelaNum - 1) != 0">
+          Entrada de {{ valorEntrada | currency : 'BRL' }}<br>
+          + {{ parcelaNum - 1 }} de <b>{{ demaisParcelas | currency : 'BRL' }}</b>
         </span>
-        <span *ngIf="(plot.numero) != 1">
-          {{ plot.numero }} Parcelas
+        <span class="msg-valores web" *ngIf="(parcelaNum - 1) == 0">
+          Valor total negociado<br>
+          À vista <b>{{ debtValue | currency : 'BRL' }}</b>
+        </span><br class="web"/>
+        <button type="submit" class="btn btn-theme web mb-2 mt-2">
+          <span>Continuar</span>
+        </button><br class="web">
+        <span class="web data-vencimento mt-2">
+          Vencimento<br>
+          <b>{{ dataVencimento | date:'dd/MM/yyyy'}}</b>
+          <button type="button" (click)="agendamentoComponent(true)" class="btn btn-theme  mb-2 mt-2">
+            <span>Alterar data</span>
+          </button>
         </span>
-      </mat-radio-button>
-    </mat-radio-group>
-      <!-- Fim parcelamento -->
-  </div>
-  <div class="direita col mt-5">
-    <!-- msg valor -->
-    <p class="text-center" *ngIf="debtValue">
-    <span class="msg-valores" *ngIf="(parcelaNum - 1) != 0">
-      Entrada de {{ valorEntrada | currency : 'BRL' }}<br>
-      + {{ parcelaNum - 1 }} de <b>{{ demaisParcelas | currency : 'BRL' }}</b>
-    </span>
-    <span class="msg-valores" *ngIf="(parcelaNum - 1) == 0">
-      Valor total negociado<br>
-      À vista <b>{{ debtValue | currency : 'BRL' }}</b>
-    </span><br>
-    <button type="submit" class="btn btn-theme  mb-2 mt-2">
-      <span>Continuar</span>
-    </button><br>
-    <span class="data-vencimento mt-2">
-      Vencimento<br>
-      <b>{{ dataVencimento | date:'dd/MM/yyyy'}}</b>
-      <button type="button" (click)="agendamentoComponent(true)" class="btn btn-theme  mb-2 mt-2">
-        <span>Alterar data</span>
-      </button>
-    </span>
-    <!-- botão voltar para vencida ou saldo total -->
-    <span *ngIf="ocultaBtnVOrS">
-      <button type="button" (click)="voltarVencidaEAvencer()" class="btn btn-theme  mb-2">Voltar</button>
-    </span>
-    <b class="pl-2" style="color: #2cf494"
-      *ngIf="(valorAtualizado - debtValue) > 1">
-      (Desconto de {{ valorAtualizado - debtValue | currency : 'BRL' }})
-      </b>
-    </p>
-    <!-- fim msg valor -->
-  </div>
+        <span class="mobile mobile-vencimento">
+          <div class="data-vencimento-mobile mb-4">
+            Vencimento em: {{ dataVencimento | date:'dd/MM/yyyy' }}
+          </div>
+          <p class="link-new-date mb-2" (click)="agendamentoComponent(true)">Clique aqui caso precise de uma nova data</p>
+        </span>
+        <!-- botão voltar para vencida ou saldo total -->
+        <span *ngIf="ocultaBtnVOrS">
+          <button type="button" (click)="backDebtProfile()" class="btn btn-theme  mb-2">Voltar</button>
+        </span>
+        <b class="pl-2" style="color: #2cf494"
+          *ngIf="(valorAtualizado - debtValue) > 1">
+          (Desconto de {{ valorAtualizado - debtValue | currency : 'BRL' }})
+          </b>
+        </p>
+        <!-- fim msg valor -->
+      </div>
+    </div>
+    <button type="button" (click)="backDebtProfile()" *ngIf="debtValue" class="btn btn-theme mobile button-fora mb-2 mt-5">
+      Voltar
+    </button>
+    <button *ngIf="debtValue" type="submit" class="btn btn-theme mobile button-fora mb-2 mt-2">
+      Continuar
+    </button>
 </div>
-<div>
+<div class="web">
   <p style="font-size: 10px !important; text-align: center;">
     Obs: Valores de parcelamento já contidos e tarifas. Os valores de serviços contratados
     junto a Riachuelo não são considerados no acordo, podendo ser inclusos posteriormente ao
@@ -61,14 +93,16 @@
 <div class="agendamento-component" *ngIf="telaAgendamento">
   <p>Escolha uma data para efetuar<br>
   o pagamento do seu débito</p>
+  <div class="mobile-flex-agendamento">
+    <mat-form-field class="mat-form-input-agendamento">
+      <input class="input-data-agendamento" matInput [matDatepickerFilter]="myFilter" [matDatepicker]="myDatePicker" [min]="minDate" max="{{dataMaxima | date:'yyyy-MM-dd'}}" [(ngModel)]="startDate">
+      <mat-datepicker-toggle  [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+      <mat-datepicker #myDatePicker></mat-datepicker>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input class="input-data-agendamento" matInput [matDatepickerFilter]="myFilter" [matDatepicker]="myDatePicker" [min]="minDate" max="{{dataMaxima | date:'yyyy-MM-dd'}}" [(ngModel)]="startDate">
-    <mat-datepicker-toggle  [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
-    <mat-datepicker #myDatePicker></mat-datepicker>
-  </mat-form-field>
+    <p class="frase-agendamento">Prazo máximo para agendamento {{ dataMaximas | date:'dd/MM/yyyy'}}</p><br class="hide">
 
-  <p class="frase-agendamento">Prazo máximo para agendamento {{ dataMaximas | date:'dd/MM/yyyy'}}</p><br>
+  </div>
 
   <div class="col-12 btn-caixa-agendamento">
     <button type="button" (click)="agendamentoComponent(false)" class="btn btn-theme mr-2 col-3 mb-2 mt-2 btn-agendamento-back">

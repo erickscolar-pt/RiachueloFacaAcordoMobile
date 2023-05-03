@@ -53,7 +53,7 @@ export class DebtCompanyComponent implements OnInit {
         this.temSaldoAVencer = true;
       }
     }
-    if ((atraso['0'].valor < 350 && this.temSaldoAVencer) || this.temAcordo) {
+    if ((atraso['0'].valor < 360 && this.temSaldoAVencer) || this.temAcordo) {
       this.loading.stopLoad();
       this.router.navigate(['/debt', { company: this.selectedCompany.company.id }], { relativeTo: this.route.parent });
 
@@ -106,7 +106,7 @@ export class DebtCompanyComponent implements OnInit {
       /* true */
       //this.loading.setLoad();
       if (data.company && this.selectedCompany === undefined) {
-        this.load = true
+        this.load = true;
         this.router.navigate(['/debt']);
         return;
       }

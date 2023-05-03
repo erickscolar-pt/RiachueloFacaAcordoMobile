@@ -1,3 +1,22 @@
+.mobile-flex{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 2em;
+}
+
+.mobile{
+  display: none !important;
+}
+.web{
+  display: inline-block !important;
+}
+.hide{
+  display: none;
+}
 mat-slider {
   width: 100%;
 }
@@ -29,7 +48,7 @@ mat-slider {
   padding: 5px;
   font-size: 15px;
   width: 100%;
-  display: flex;
+  display: flex !important;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: center;
@@ -40,8 +59,8 @@ mat-slider {
 .direita button{
   align-items: center;
   align-content: center;
-  border-radius: 15px;
-  display: inline-flex;
+  border-radius: 15px !important;
+  display: inline-flex !important;
   flex-wrap: nowrap;
   font-size: 13px;
   height: 35px;
@@ -57,12 +76,6 @@ mat-slider {
 p {
   color: black !important;
   font-size: 20px !important;
-}
-
-.parcelas-caixa{
-  background-color: white;
-  border:1px solid black !important ;
-  padding: 15px;
 }
 
 .container-fluid {
@@ -84,6 +97,7 @@ p {
   border-radius: 10px !important;
   font-size: 20px !important;
 }
+
 
 /deep/ .parcela .mat-radio-label-content{
   color: white !important;
@@ -194,46 +208,8 @@ p {
   align-items: center;
 }
 
-@media (max-width: 490px){
-  .texto{
-    font-size: 12px;
-  }
-  .btn-agendamento{
-    font-size: 12px;
-    display: inline-grid;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: center;
-  }
-  .frase-agendamento{
-    font-size: 13px!important;
-  }
-  .btn-agendamento-back{
-    background: url("../../../../../assets/img//btn-back.png") no-repeat center ;
-    padding: 0px !important;
-    background-color: #fff !important;
-    padding-top: 18px !important;
-    padding-bottom: 18px !important;
-    padding-right: 2px;
-    padding-left: 2px;
-  }
-  .btn-agendamento-back:hover{
-    background: url("../../../../../assets/img//btn-back-two.png") no-repeat center ;
-    padding: 0px !important;
-    background-color: #7511a9 !important;
-    padding-top: 18px !important;
-    padding-bottom: 18px !important;
-    padding-right: 2px;
-    padding-left: 2px;
-  }
-  .agendamento-component{
-    flex: 0 0 83.333333%;
-    max-width: 90.333333%;
-  }
-}
-
 @media (max-width: 1490px) and (min-width: 601px){
+
 /*   /deep/ .mat-radio{
     display: flex !important;
   } */
@@ -257,4 +233,217 @@ p {
     margin: 0px !important;
   }
 
+}
+
+@media (max-width: 600px){
+  .esquerda{
+    .parcela{
+      display: flex !important;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .direita{
+    .msg-valores {
+      display: none !important;
+  }
+    .mobile-vencimento{
+      .data-vencimento-mobile{
+        background: #FFFFFF;
+        border: 1px solid #C978D7;
+        border-radius: 3px;
+      }
+      .link-new-date{
+        cursor: pointer;
+        color: #C978D7 !important;
+        text-decoration: underline !important;
+        font-size: 0.8em !important;
+        font-weight: bold;
+      }
+    }
+  }
+  .direita button {
+    display: none !important;
+  }
+  .titulo{
+    color: #FFFF !important;
+    margin-bottom: 2em;
+    //font-size: 25px !important;
+  }
+  .riachuelo {
+    background-color: transparent !important;
+    border: none !important;
+    height: auto !important;
+    .mobile-flex{
+      background: #F4F5E3;
+      border-radius: 8px;
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: center;
+      align-items: stretch;
+      .mobile-valor{
+        font-size: 2em;
+        .valor{
+          color: #7511a9;
+          font-weight: bold;
+        }
+      }
+    }
+    .mobile-flex-div{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      .button-fora{
+        width: 16em;
+        background: #9F36C4 !important;
+        border-radius: 6px !important;
+        display: flex !important;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  .mobile{
+    display: inline-block !important;
+    width: 100%;
+  }
+  .web{
+    display: none !important;
+  }
+  .hide{
+    display: none;
+  }
+  /deep/ .parcela .mat-radio-outer-circle {
+    display: inherit;
+    //background: #7511a9;
+    border: 1px solid #7511a9;
+  }
+  /deep/ .parcela .mat-radio-checked {
+    .mat-radio-outer-circle {
+      border: 1px solid #7511a9;
+      background-color: #7511a9 !important;
+      display: inherit !important;
+    }
+
+    .mat-radio-inner-circle {
+      display: inherit !important;
+    }
+  }
+  /deep/ .mat-radio-checked .mat-radio-inner-circle {
+    background-color: #7511a9 !important;
+    border-color: #7511a9 !important;
+  }
+
+  /deep/ .parcela .mat-radio-label-content{
+    color: #7511a9 !important;
+    padding: 8px;
+    background-color: transparent;
+    border: none;
+    border-radius: none;
+    margin: 5px !important;
+    display: flex !important;
+    order: 0 !important;
+    line-height: inherit !important;
+    padding-left: 8px !important;
+    padding-right: 0 !important;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  /deep/ .parcela .mat-radio-label-content:hover{
+    background-color: transparent !important;
+    color: #7511a9 !important;
+    border: none !important;
+  }
+  .texto{
+    font-size: 12px;
+  }
+  .btn-agendamento{
+    font-size: 12px;
+    display: inline-grid;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+  }
+  .frase-agendamento{
+    font-size: 13px!important;
+  }
+
+  .agendamento-component{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    p{
+      color: #FFFFFF !important;
+      margin-bottom: 2em;
+    }
+    .mobile-flex-agendamento{
+      background: #F4F5E3 !important;
+      border-radius: 8px !important;
+      padding: 2em;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2em;
+      p{
+        color: #000 !important;
+        margin-bottom: 0 !important;
+      }
+      .hide{
+        display: none;
+      }
+    }
+    .btn-agendamento{
+      font-size: 12px;
+      background: #9F36C4 !important;
+      border-radius: 6px !important;
+    }
+    .btn-agendamento-back{
+      background: url("../../../../../assets/img/btn-back.png") no-repeat center !important;
+      padding: 0px !important;
+      background-color: transparent !important;
+      padding-top: 18px !important;
+      padding-bottom: 18px !important;
+      padding-right: 2px !important;
+      padding-left: 2px !important;
+    }
+    .btn-agendamento-back:hover{
+      background: url("../../../../../assets/img//btn-back-two.png") no-repeat center ;
+      padding: 0px !important;
+      background-color: transparent !important;
+      padding-top: 18px !important;
+      padding-bottom: 18px !important;
+      padding-right: 2px;
+      padding-left: 2px;
+    }
+    .btn-caixa-agendamento{
+      display: flex;
+      flex-direction: column-reverse;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }

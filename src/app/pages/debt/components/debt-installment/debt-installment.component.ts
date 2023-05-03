@@ -22,14 +22,18 @@ export class DebtInstallmentComponent implements OnInit, OnChanges {
   @Input() debt: CompanyDebt;
   @Input() jocker: boolean;
   @Input() ocultaBtnVOrS: boolean;
+
   @Output() generateCCPlot = new EventEmitter();
   @Output() volta = new EventEmitter();
+  @Output() backProfile = new EventEmitter();
+  @Output() debtSelect = new EventEmitter();
+
   minDate = new Date();
   fontStyle?: string;
   startDate: string;
   fontStyleControl = new FormControl();
   // @Output() generateTicketPlot = new EventEmitter();
-
+  radius: number;
   public tradingOptions: Plot[];
   public allTradingOptions: TradingDetails[];
   public paymentMethodForm: FormGroup;
@@ -53,6 +57,13 @@ export class DebtInstallmentComponent implements OnInit, OnChanges {
   public receb: number;
   public nameRota: string;
   public voltar: boolean = false;
+  public valAtualizado: number;
+  public quantidaDeParcelas: number;
+  public typeSaldo: string;
+  public debts: string = "Debit - (Quitação Parcial)";
+  public invoicement: string = "Invoicement - (Parcelamento Parcial)";
+  public acquittance: string = "Acquittance - (Quitação Total)";
+  public agreement: string = "Agreement - (Parcelado)";
 
   constructor(
     private route: ActivatedRoute,
@@ -75,12 +86,31 @@ export class DebtInstallmentComponent implements OnInit, OnChanges {
     this.route.params.subscribe(data => {
       this.loading.setLoad();
     });
+    this.typeSaldo = sessionStorage.getItem('typeSaldo')
+
     this.tradingOptions = this.filterPlots(this.debt.tradingOptions)
+    //console.log("Opcoes de negociacao..:"+JSON.stringify(this.tradingOptions))
+    this.quantidaDeParcelas = this.tradingOptions.length;
     this.allTradingOptions = this.debt.tradingOptions;
     this.loading.stopLoad();
+    
   }
 
   ngOnInit() {
+    this.radius = 11
+     this.debt.dividas.filter(divida => {
+      let valTipoNegociacao = sessionStorage.getItem('tipoNegociacao');
+      if(divida.descricao == 'Saldo A Vencer'){
+        if(valTipoNegociacao == 'All'){
+          this.valAtualizado = divida.valorAtualizado + divida.valorAtualizado;
+        } else {
+          this.valAtualizado = divida.valorAtualizado ;
+        }
+      } else {
+        this.valAtualizado = divida.valorAtualizado ;
+      }
+    })
+
     this.loading.acessoClient("Opcao de negociacao",localStorage.getItem('cpf')).subscribe();
     this.telaAgendamento = false;
     if(this.router.url == '/debt;company=12'){
@@ -143,6 +173,10 @@ export class DebtInstallmentComponent implements OnInit, OnChanges {
       }
     );
   }
+  
+  public backDebtProfile(){
+    this.backProfile.emit(true)
+  }
 
   public voltarVencidaEAvencer(){
     this.voltar = true;
@@ -160,6 +194,7 @@ export class DebtInstallmentComponent implements OnInit, OnChanges {
     if (this.paymentMethodForm.valid) {
       this.debt.plotSelected = this.findValue(this.paymentMethodForm.value.installments);
       this.debt.tradingOptionSelected = this.findTrading(this.paymentMethodForm.value.installments)
+      this.debtSelect.emit(this.debt.plotSelected)
       localStorage.setItem('pontos', this.pontos);
       localStorage.setItem('debt', JSON.stringify(this.debt));
       localStorage.setItem('vencimento', formatDate(this.debt.plotSelected.dataVencimento, 'dd/MM/yyyy', 'pt'));
@@ -227,32 +262,25 @@ export class DebtInstallmentComponent implements OnInit, OnChanges {
     }
   }
   private filterPlots(debtValues: TradingDetails[]) {
-   /* let plots: Plot[] = [];
-    let plotFirst: Plot;
-    let aux: Plot = {};
 
-    for (let option of debtValues) {
-      for (let plot of option.parcelas) {
-        if (plot.numero == "1") {
-          plotFirst = plot;
-          break;
+    let plots: Plot[] = [];
+    const plotTotal = debtValues.filter(res => this.typeSaldo == "SaldoTotal" && (res.descricaoFaixa == this.acquittance || res.descricaoFaixa == this.agreement) );
+    const plotVencido = debtValues.filter(res => this.typeSaldo == "SaldoVencido" && (res.descricaoFaixa == this.debts || res.descricaoFaixa == this.invoicement) )
+
+    if(plotTotal.length > 0){
+      for (let option of plotTotal) {
+        for (let plot of option.parcelas) {
+            plots.push(plot);
         }
+        
       }
     }
-    for (let i = 1; i < 6; i++) {
-      aux = {}
-      aux.dataVencimento = plotFirst.dataVencimento
-      aux.numero = i.toString()
-      aux.valorEntrada = plotFirst.valorEntrada / i
-      aux.valorDemaisParcelas = i == 1 ? null : (plotFirst.valorEntrada / i)
-      plots.push(aux)
-    }
-    return plots;*/
-    let plots: Plot[] = [];
-    for (let option of debtValues) {
-      for (let plot of option.parcelas) {
-        //console.log(plot)
-        plots.push(plot);
+    if(plotVencido.length > 0){
+      for (let option of plotVencido) {
+        for (let plot of option.parcelas) {
+            plots.push(plot);
+        }
+        
       }
     }
     return plots;

@@ -1,13 +1,12 @@
-<div class="row no-gutters card border-0 p-4 blocoDebito riachuelo"
-  *ngIf="debt.dividas.length > 0 && debt.acordo.length == 0">
-  <div class="desconto-caixa" *ngIf="!dividaVencida">
+<div [ngClass]="atrasoMenor360 && valorSemDesconto > valorComDesconto ? 'hide-mobile row no-gutters card border-0 p-4 blocoDebito riachuelo' : 'row no-gutters card border-0 p-4 blocoDebito riachuelo' " *ngIf="debt.dividas.length > 0 && debt.acordo.length == 0">
+  <div class="desconto-caixa-web" *ngIf="!dividaVencida">
     <div class="desconto">
       <span>{{ percentualDeDesconto | percent:'1.0-0' }} <br> OFF</span>
     </div>
   </div>
-  <div class="col-12">
+  <div class="col-12 mobile">
     <div class="row no-gutters align-items-center justify-content-center">
-      <div class="col-12">
+      <div class="col-12 caixa-img">
         <div class="col-12 line-debt-itens">
           <figure *ngIf="debt.bandeira.includes('Net')" class="col-9 my-1">
             <img [src]="NetImage" width="60" class="my-1 p-2 mx-auto" alt="">
@@ -18,17 +17,34 @@
           <p class="col-5 text-title dbt">Débito com:</p>
         </div>
       </div>
-      <!-- Parei aqui -->
       <div class="col-12 row justify-content-center">
-        <div class="col-12">
-          <p>Contrato: {{ numeroContrato }} </p>
-          <p>Descrição: {{ bandeira }} </p>
-          <div *ngIf="!atrasoMenor350 && valorSemDesconto > valorComDesconto">
-            <p>Dias em atraso: {{ diasEmAtraso }} </p>
-            <div *ngIf="valorSemDesconto > valorComDesconto">
+        <div [ngClass]="atrasoMenor360 && valorSemDesconto > valorComDesconto ? 'saldo-vencido-a-vencer-web col-12 mobile-desc' : 'col-12 mobile-desc' ">
+          <p class="contrato">Contrato: {{ numeroContrato }} </p>
+          <p class="descricao">Descrição: {{ bandeira }} </p>
+          <div class="dias-em-atraso-flex" *ngIf="!atrasoMenor360 && valorSemDesconto > valorComDesconto">
+            <p class="dias-em-atraso">Dias em atraso: {{ diasEmAtraso }} </p>
+            <div class="web-de-por-ate" *ngIf="valorSemDesconto > valorComDesconto">
               <p class="mb-4">De: <span style="text-decoration: line-through; color: #7939e1">{{ valorSemDesconto |
                   currency : 'BRL' }}</span> por até <span style="color: #2cf494">{{ valorComDesconto | currency : 'BRL'
                   }}</span> </p>
+            </div>
+            <div class="mobile-de-por-ate" *ngIf="valorSemDesconto > valorComDesconto">
+              <div>
+                <p>De:
+                  <span style="text-decoration: line-through; color: #7939e1">
+                    {{ valorSemDesconto | currency : 'BRL' }}
+                  </span>
+                </p>
+                <p>
+                  por até:
+                    <span style="color: #2cf494">
+                      {{ valorComDesconto | currency : 'BRL' }}
+                    </span>
+                </p>
+              </div>
+              <div class="desconto-mobile">
+                <span>{{ percentualDeDesconto | percent:'1.0-0' }} <br> OFF</span>
+              </div>
             </div>
             <div>
               <p class="description-ofertas mb-3">Com a Faça Acordo você economiza!</p>
@@ -37,7 +53,8 @@
           <div *ngIf="valorComDesconto >= valorSemDesconto">
               <p class="destaque">Saldo atual: {{ valorComDesconto | currency : 'BRL' }}</p>
           </div>
-          <div *ngIf="atrasoMenor350 && valorSemDesconto > valorComDesconto">
+          <!-- saldo vencido e a vencer web -->
+          <div class="caixa-saldos-descontos web" *ngIf="atrasoMenor360 && valorSemDesconto > valorComDesconto">
             <p><span>Dias em atraso: {{ diasEmAtraso }} </span></p>
             <div >
               <div>
@@ -67,22 +84,74 @@
                 </div>
                 <div class="col-12">
                   <a
-                    href="https://api.whatsapp.com/send?phone=5511964392624&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato">
+                    href="https://api.whatsapp.com/send?phone=5511963610672&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato">
                     <img width="80" src="./../../../../assets/img/home/whatsapp.png" alt="">
                   </a>
                 </div>
               </div>
             </div>
           </div>
+          <!-- fim saldo vencido e a vencer web -->
+
         </div>
+
       </div>
     </div>
   </div>
-  <div class="col-12 row mx-auto" *ngIf="valorComDesconto !== 0 && !dividaVencida">
+  <div class="col-12 row mx-auto mobile-caixa-btns" *ngIf="valorComDesconto !== 0 && !dividaVencida">
     <div class="col-12 text-center">
-      <button class="btn btn-theme col-6 oferta" (click)="goToInstallments('All')">
+      <button class="btn btn-theme col-6 oferta btn-web" (click)="goToInstallments('All')">
+        Ver ofertas
+      </button>
+      <button class="btn btn-theme col-6 oferta btn-mobile" (click)="goToInstallmentsMobile('All')">
         Ver ofertas
       </button>
     </div>
   </div>
 </div>
+  <!-- saldo vencido e a vencer mobile -->
+  <div class="mobile-vencido"
+  *ngIf="atrasoMenor360 && valorSemDesconto > valorComDesconto"
+  >
+    <div class="flex-mobile" *ngIf="dividaVencida">
+      <p>Você tem saldo vencido e saldo a vencer.<br>
+      O que deseja fazer ?</p>
+        <mat-radio-group
+        [(ngModel)]="labelPosition"
+        class="radio-group"
+        >
+          <mat-radio-button
+            class="radio-button"
+            [value]="dividaVencida?.idTra">
+              Negociar apenas o que está em atraso.
+          </mat-radio-button>
+          <mat-radio-button
+            class="radio-button"
+            value="All">
+              Negociar meu saldo total (vencido + vencer)
+          </mat-radio-button>
+        </mat-radio-group>
+        <button
+          class="btn btn-theme text-center oferta"
+          (click)="selectOptionVencidoAndAVencerMobile(labelPosition)">
+            Continuar
+        </button>
+    </div>
+    <!-- msg sem divida -->
+      <div *ngIf="!dividaVencida">
+        <h2 class="text-center p-3 destaque">Parabéns! Você ainda não tem débitos em atraso.</h2>
+        <div class="row text-center">
+          <div class="col-12">
+            <p>Se preferir, entre em contato conosco:</p>
+          </div>
+          <div class="col-12">
+            <a
+            href="https://api.whatsapp.com/send?phone=5511963610672&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato">
+            <img width="80" src="./../../../../assets/img/home/whatsapp.png" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- msg sem divida -->
+  </div>
+  <!-- saldo vencido e a vencer mobile -->

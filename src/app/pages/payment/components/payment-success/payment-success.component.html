@@ -2,9 +2,8 @@
   <div class="container py-5">
     <div class="row no-gutters w-100 card paguecomprando">
       <!-- parc desconto -->
-      <div class="desconto-caixa">
+      <div class="desconto-caixa web">
         <div class="desconto">
-      <!--               <span>{{ percentualDeDesconto | percent:'1.0-0' }} <br> OFF</span> -->
           <span>{{ percentualDesconto | percent:'1.0-0' }}<br> OFF</span>
         </div>
       </div>
@@ -17,15 +16,20 @@
           </div>
         </div>
         <div class="row mb-5 mt-4">
-          <div class="col caixa-pontos">
+<!--           <div class="col caixa-pontos">
             <div class="pontos-msg text-center">
               <div class="position-pontos">
                 <img class="img-pontos" src="../../../../../assets/img/PONTOS.png" alt="Pontos">
               </div>
               <span><b>Pontos:</b></span>
-              <span><p>{{ pontos }} pontos</p></span>
+              <span class="pontos-mobile"><p>{{ pontos }} pontos</p></span>
+              <div class="desconto-caixa">
+                <div class="desconto-mobile">
+                  <span>{{ percentualDesconto | percent:'1.0-0' }} <br> OFF</span>
+                </div>
+              </div>
             </div>
-          </div>
+          </div> -->
           <div class="col caixa-direita">
             <b class="mb-1">Resumo de Acordo:</b>
             <span>Plano escolhido: {{ parcOrAvista }}</span>
@@ -33,7 +37,7 @@
             <span>Vencimento: {{ dataVencimento }}</span>
           </div>
         </div>
-        <div class="col-12 text-center mb-4">
+<!--         <div class="col-12 text-center mb-4 info-mobile">
           <p>Os pontos informados são por parcela do acordo e serão liberados após<br>
           o pagamento, sendo enviado por e-mail seu código de utilização.<br>
           Ponto não acumulativos</p>
@@ -46,7 +50,7 @@
                 Visite nossa loja!
               </b>
           </a></span>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

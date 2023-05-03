@@ -35,7 +35,7 @@ export class FooterComponent implements OnInit {
       text: 'Faça Acordo'
     },
     {
-      link: "https://api.whatsapp.com/send?phone=5511964392624&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato",
+      link: "https://api.whatsapp.com/send?phone=5511963610672&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato",
       img: './../../../assets/img/whats.png',
       text: 'Faça Acordo'
     }
@@ -127,7 +127,7 @@ export class FooterComponent implements OnInit {
       return this.router.navigate(['login']);
     }
     if(opt == "whatsapp"){
-      return window.open("https://api.whatsapp.com/send?phone=5511964392624&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato")
+      return window.open("https://api.whatsapp.com/send?phone=5511963610672&text=Ol%C3%A1%2C%20gostaria%20de%20um%20contato")
     }
     if(opt == "blog"){
       return window.open("https://www.blog.facaacordo.com.br/")

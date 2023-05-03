@@ -1,3 +1,10 @@
+.web{
+  display: inline-block !important;
+}
+.mobile{
+  display: none !important;
+}
+
 .card{
   border-radius: 15px;
 }
@@ -85,10 +92,13 @@ a {
 }
 
 .desconto-caixa{
-  position: absolute;
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
+  position: absolute !important;
+  display: flex !important;
+  width: 100% !important;
+  justify-content: flex-end !important;
+  .desconto-mobile{
+    display: none !important;
+  }
 }
 
 .desconto{
@@ -133,11 +143,86 @@ a {
     color: #7511a9 ;
 }
 
-@media (max-width: 490px){
+@media (max-width: 600px){
+  .web{
+    display: none !important;
+  }
+  .mobile{
+    display: inherit !important;
+  }
+  .card{
+    background: rgba(255, 255, 255, 0.10) !important;
+    border-radius: 5px !important;
+    .info-mobile{
+      p{
+        color: #fff ;
+      }
+    }
+    .caixa-pontos{
+      .pontos-msg{
+        border: none !important;
+        border-radius: 8px;
+        background: linear-gradient(105.52deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%) !important;
+        display: flex;
+        .pontos-mobile{
+          //background: linear-gradient(105.52deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+          background: linear-gradient(221deg, rgba(255, 255, 255, 0.1) 0%, #ba6dd6 100%);
+          background-size: 400% 400%;
+          -webkit-animation: MobilePontosAnimate 6s ease infinite;
+          -moz-animation: MobilePontosAnimate 6s ease infinite;
+          animation: MobilePontosAnimate 6s ease infinite;
+          border-radius: 5px;
+          margin-bottom: 1em;
+          p{
+            padding: 0 12px !important;
+            margin: 0 !important;
+            color: #fff !important;
+          }
+        }
+        .position-pontos {
+          display: none !important;
+        }
+        .desconto-caixa{
+          position: relative !important;
+          display: flex !important;
+          width: 100% !important;
+          flex-direction: column !important;
+          flex-wrap: nowrap !important;
+          align-content: center !important;
+          justify-content: center !important;
+          align-items: center !important;
+
+          .desconto-mobile{
+            background: linear-gradient(180deg, #8970CF 0%, #C04FFF 55.21%, #A142C2 100%);
+            border-radius: 3px;
+            width: 4.2em;
+            align-items: center;
+            display: flex !important;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-content: center;
+            justify-content: center;
+            span{
+              color: #FFFFFF;
+              font-size: 14px;
+              font-weight: 500;
+            }
+          }
+        }
+
+      }
+
+    }
+    .caixa-direita {
+      span{
+        font-size: 1em !important;
+      }
+  }
+
+  }
   .full-name{
       margin-top: 6rem !important;
   }
-
   .caixa-pontos{
       margin-bottom: 2em;
   }
@@ -150,4 +235,20 @@ a {
     font-size: 25px;
   }
 
+}
+
+@-webkit-keyframes MobilePontosAnimate {
+  0%{background-position:94% 0%}
+  50%{background-position:7% 100%}
+  100%{background-position:94% 0%}
+}
+@-moz-keyframes MobilePontosAnimate {
+  0%{background-position:94% 0%}
+  50%{background-position:7% 100%}
+  100%{background-position:94% 0%}
+}
+@keyframes MobilePontosAnimate {
+  0%{background-position:94% 0%}
+  50%{background-position:7% 100%}
+  100%{background-position:94% 0%}
 }

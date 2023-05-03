@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="container h-100 py-5 as">
+  <div class="container cont-mobile h-100 py-5 as">
       <div class="row no-gutters h-100 py-5 align-items-center">
           <!-- Componente login -->
           <div class="col-12 col-xl-3"></div>
@@ -21,17 +21,21 @@
                   <h2 class="text-center">Para sua segurança foi gerado um código PIN.</h2>
                   <h2 class="text-center">Deseja recebê-lo por:</h2>
                   <div class="row no-gutters my-3 caixas">
-                      <div class="caixa-btns">
+                      <div class="col-12 d-flex justify-content-center mb-2 generatepins-web">
+                        <button [ngClass]="checkEmail ? 'green' : '' " (click)="generatePinEmail()" class="btn btn-theme col-4 mr-5">E-mail</button>
+                        <button [ngClass]="checkSms ? 'green' : '' " (click)="generatePinSMS()" class="btn btn-theme col-4">SMS</button>
+                      </div>
+                      <div class="caixa-btns generatepins-mobile">
                           <button
                             *ngIf="!checkSms"
-                            [ngClass]="checkEmail ? 'green' : '' " 
-                            (click)="generatePinEmail()" 
+                            [ngClass]="checkEmail ? 'green' : '' "
+                            (click)="generatePinEmail()"
                             class="btn btn-theme email"
                             >E-mail</button>
                           <button
                             *ngIf="!checkEmail"
-                            [ngClass]="checkSms ? 'green' : '' " 
-                            (click)="generatePinSMS()" 
+                            [ngClass]="checkSms ? 'green' : '' "
+                            (click)="generatePinSMS()"
                             class="btn btn-theme sms"
                             >SMS</button>
                       </div>

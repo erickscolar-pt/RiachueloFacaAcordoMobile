@@ -28,7 +28,10 @@ export class DebtComponent implements OnChanges, AfterViewChecked {
   public hasErrorCC: boolean = false;
   public backCard:boolean;
   public isCardTrue: boolean;
+  public open: boolean;
   public venOrSaldoTotal: boolean;
+  public hideDebtProfile: boolean = true;
+  public optionNegocia: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,12 +52,28 @@ export class DebtComponent implements OnChanges, AfterViewChecked {
     return acordo.length > 0 ? true : false;
   }
 
+
   vencidaOrVencer(event){
     if(event == true){
       this.venOrSaldoTotal = true
     } else {
       this.venOrSaldoTotal = false;
     }
+  }
+
+  viewDebtProfile(event){
+    this.hideDebtProfile = event;
+  }
+
+  hideCreditOpenOption(event){
+    console.log('hide => ' + event)
+    this.open = event;
+    this.backCard = event;
+  }
+
+  backMobile(event){
+    this.isCardTrue = event;
+    this.hideDebtProfile = event;
   }
 
   changeTradingOptions(debt : CompanyDebt){
